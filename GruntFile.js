@@ -49,7 +49,7 @@ module.exports = function(grunt){
       angularMaterial: {
         expand: true,
         cwd: 'node_modules/angular-material/',
-        src: ['angular-material.css',
+        src: ['angular-material.min.css',
               'angular-material.js',
               'angular-material.min.js',
               'angular-material.min.js.map'],
@@ -57,7 +57,7 @@ module.exports = function(grunt){
       },
       angularMaterialDataTable: {
         expand: true,
-        cwd: 'node_modules/angular-material-data-table/',
+        cwd: 'node_modules/angular-material-data-table/dist',
         src: ['md-data-table.min.css',
               'md-data-table.min.js'],
         dest: 'server/public/vendors/angular-material-data-table/'

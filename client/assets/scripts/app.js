@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', []);
 
 myApp.controller('UserController', ['$scope', '$http', '$window', function($scope, $http, $window) {
-    $scope.userName;
+    $scope.userName='';
 
     // This happens after page load, which means it has authenticated if it was ever going to
     // NOT SECURE

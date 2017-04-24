@@ -17,5 +17,5 @@ myApp.controller('UserController', ['$scope', '$http', '$location', function($sc
       console.log('logged out');
       $location.path("/home");
     });
-  }
+  };
 }]);
