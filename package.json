@@ -1,7 +1,7 @@
 {
   "name": "kepd",
   "version": "1.0.0",
-  "description": "",
+  "description": "Karen-English Picture Dictionary",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,7 +13,7 @@
     "angular": "1.5.5",
     "angular-animate": "1.5.5",
     "angular-aria": "1.5.5",
-    "angular-material": "^1.1.4",
+    "angular-material": "1.1.3",
     "angular-material-data-table": "^0.10.10",
     "angular-messages": "1.5.5",
     "angular-route": "1.5.5",

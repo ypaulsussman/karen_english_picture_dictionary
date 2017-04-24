@@ -17,7 +17,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Serve back static files
-app.use(express.static(path.join(__dirname, './public')));
+var pathToFiles = path.join(__dirname, './public');
+console.log(pathToFiles);
+app.use(express.static('server/public'));
 
 // Passport Session Configuration //
 app.use(session({

@@ -2,23 +2,29 @@
 <html>
     <head>
         <title>Welcome to the KEPD!</title>
-        <link rel="stylesheet" href="vendors/angular-material/angular-material.min.css" />
-        <link rel="stylesheet" href="vendors/md-data-table/md-data-table.min.css" />
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="/vendors/angular-material/angular-material.min.css">
+        <link rel="stylesheet" href="/vendors/angular-material-data-table/md-data-table.min.css">
         <link rel="stylesheet" href="/assets/styles/style.css">
 
+        <!-- Angular requires -->
         <script type="text/javascript" src="/vendors/angular/angular.min.js"></script>
         <script type="text/javascript" src="/vendors/angular-route/angular-route.min.js"></script>
         <script type="text/javascript" src="/vendors/angular-animate/angular-animate.min.js"></script>
         <script type="text/javascript" src="/vendors/angular-aria/angular-aria.min.js"></script>
         <script type="text/javascript" src="/vendors/angular-messages/angular-messages.min.js"></script>
         <script type="text/javascript" src="/vendors/angular-material/angular-material.min.js"></script>
-        <script type="text/javascript" src="/vendors/md-data-table/md-data-table.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-material-data-table/md-data-table.min.js"></script>
+
+        <!-- Other requires -->
         <script type="text/javascript" src="/assets/scripts/clientapp.js"></script>
         <script type="text/javascript" src="/assets/scripts/controllers/loginController.js"></script>
         <script type="text/javascript" src="/assets/scripts/controllers/userController.js"></script>
     </head>
 
     <body ng-app="myApp">
+      <!-- removed header template, below, until better design solution comes along: -->
       <!-- <header ng-include="'/views/templates/header.html'"></header> -->
 
       <main ng-view></main>

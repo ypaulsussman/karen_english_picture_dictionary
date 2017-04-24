@@ -59,7 +59,9 @@ module.exports = function(grunt){
         expand: true,
         cwd: 'node_modules/angular-material-data-table/dist',
         src: ['md-data-table.min.css',
-              'md-data-table.min.js'],
+              'md-data-table.min.js',
+              'md-data-table.css',
+              'md-data-table.js'],
         dest: 'server/public/vendors/angular-material-data-table/'
       },
       angularMessages: {
