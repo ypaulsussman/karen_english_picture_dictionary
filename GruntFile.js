@@ -30,17 +30,54 @@ module.exports = function(grunt){
               'angular-route.min.js.map'],
         dest: 'server/public/vendors/angular-route/'
       },
-
+      angularAnimate: {
+        expand: true,
+        cwd: 'node_modules/angular-animate/',
+        src: ['angular-animate.js',
+              'angular-animate.min.js',
+              'angular-animate.min.js.map'],
+        dest: 'server/public/vendors/angular-animate/'
+      },
+      angularAria: {
+        expand: true,
+        cwd: 'node_modules/angular-aria/',
+        src: ['angular-aria.js',
+              'angular-aria.min.js',
+              'angular-aria.min.js.map'],
+        dest: 'server/public/vendors/angular-aria/'
+      },
+      angularMaterial: {
+        expand: true,
+        cwd: 'node_modules/angular-material/',
+        src: ['angular-material.css',
+              'angular-material.js',
+              'angular-material.min.js',
+              'angular-material.min.js.map'],
+        dest: 'server/public/vendors/angular-material/'
+      },
+      angularMaterialDataTable: {
+        expand: true,
+        cwd: 'node_modules/angular-material-data-table/',
+        src: ['md-data-table.min.css',
+              'md-data-table.min.js'],
+        dest: 'server/public/vendors/angular-material-data-table/'
+      },
+      angularMessages: {
+        expand: true,
+        cwd: 'node_modules/angular-messages/',
+        src: ['angular-messages.js',
+              'angular-messages.min.js',
+              'angular-messages.min.js.map'],
+        dest: 'server/public/vendors/angular-messages/'
+      },
       // you'll need to write copy configs for
       // angular-animate, angular-aria, angular-material, angular-material-data-table, angular-messages
       // before you begin to use angular materials
 
-      //*NOTE: next step is livereload
     },
     watch: {
-      files : ['client/**/*.*', 'client/**/**/*.*'],
+      files : ['client/**/*.*', 'client/**/**/*.*', 'client/**/**/**/*.*'],
       tasks : ['copy'],
-      options: { livereload: true },
     }
   });
 
