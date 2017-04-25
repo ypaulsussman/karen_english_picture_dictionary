@@ -3,6 +3,10 @@
   src: url('knu.ttf')  format('truetype'),
 }
 
+#logout{
+  color: red;
+}
+
 .karen{
   font-family: 'KNU', fantasy;
 }
@@ -11,6 +15,14 @@ td.karen, input.karen{
 font-size: 22px !important;
 }
 
+.cardApprox{
+  height: 100px;
+  width: 100%;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+/*Legacy styles from passport*/
 
 .instructions .container h1 {
     font-size: 24px;

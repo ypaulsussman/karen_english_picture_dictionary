@@ -19,14 +19,12 @@ var pool = new pg.Pool(config);
 router.get('/', function(req, res) {
   pool.connect(function(errorConnectingToDb, db, done) {
     if (errorConnectingToDb) {
-      console.log('error connecting: ', errorConnectingToDb);
       res.sendStatus(500);
     } else {
       db.query('SELECT * from "items" ORDER BY "id" DESC;',
       function(queryError, result) {
         done();
         if (queryError) {
-          console.log('error querying: ', queryError);
           res.sendStatus(500);
         } else {
           res.send(result.rows);
@@ -34,7 +32,38 @@ router.get('/', function(req, res) {
       });
     }
   });
-});
+});//end router.get
+
+router.post('/add', function(req, res) {
+  console.log("items add successfully touched");
+  console.log('item to add inside post: ', req.body);
+  var itemTheme = req.body.itemTheme;
+  var itemURL = req.body.itemURL;
+  var itemEN = req.body.itemEN;
+  var itemKN = req.body.itemKN;
+  var itemPron = req.body.itemPron;
+  pool.connect(function(errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      console.log('error connecting: ', errorConnectingToDb);
+      res.sendStatus(500);
+    } else {
+      db.query('INSERT INTO "items" ("item_theme", "item_prompt", "item_answer_en", "item_answer_kn", "item_answer_phon_kn") VALUES ($1,$2,$3,$4,$5);', //--> $1 b/c NOT zero-indexed; $1 refers to "author" in the line below
+      [itemTheme, itemURL, itemEN, itemKN, itemPron],
+      function(queryError, result) {
+        done();
+        if (queryError) {
+          console.log("error querying: ", queryError);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+    }
+  });
+});//end router.post
+
+
+
 
 module.exports = router;
 //who calls this module?
