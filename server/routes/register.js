@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
 
   var saveUser = {
     username: req.body.username,
-    password: encryptLib.encryptPassword(req.body.password)
+    password: encryptLib.encryptPassword(req.body.password),
   };
   console.log('new user:', saveUser);
 
