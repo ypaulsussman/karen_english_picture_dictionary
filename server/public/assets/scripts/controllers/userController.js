@@ -5,6 +5,7 @@ myApp.controller('UserController', ['$scope', '$http', '$location', function($sc
       if(response.data.username && response.data.role==="student") {
           // user has a current session on the server and is student
           $scope.userName = response.data.username;
+          $scope.role = response.data.role;
           console.log('User Data: ', response.data.username, response.data.role, " yep a student");
           $location.path("/student");
       } else if (response.data.username && response.data.role==="admin") {

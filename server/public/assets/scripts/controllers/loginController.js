@@ -6,26 +6,29 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', function($s
     $scope.message = '';
 
     $scope.login = function() {
-      if($scope.user.username == '' || $scope.user.password == '') {
+      if($scope.user.username === '' || $scope.user.password === '') {
         $scope.message = "Enter your username and password!";
       } else {
         console.log('sending to server...', $scope.user);
         $http.post('/', $scope.user).then(function(response) {
-          if(response.data.username) {
-            console.log('success: ', response.data);
-            // location works with SPA (ng-route)
-            console.log('redirecting to user page');
-            $location.path('/user');
+          if(response.data.username && response.data.role==="student") {
+            // console.log('success: your profile is...', response.data);
+            // console.log('redirecting to student page');
+            $location.path('/student');
+          } else if (response.data.username && response.data.role==="admin") {
+            // console.log('success: your profile is...', response.data);
+            // console.log('redirecting to admin page');
+            $location.path('/admin');
           } else {
             console.log('failure: ', response);
             $scope.message = "Wrong!!";
           }
         });
       }
-    }
+    };
 
     $scope.registerUser = function() {
-      if($scope.user.username == '' || $scope.user.password == '') {
+      if($scope.user.username === '' || $scope.user.password === '') {
         $scope.message = "Choose a username and password!";
       } else {
         console.log('sending to server...', $scope.user);
@@ -35,8 +38,8 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', function($s
         },
         function(response) {
           console.log('error');
-          $scope.message = "Please try again."
+          $scope.message = "Please try again.";
         });
       }
-    }
+    };
 }]);

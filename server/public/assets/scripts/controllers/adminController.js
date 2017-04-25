@@ -1,4 +1,4 @@
-myApp.controller('UserController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+myApp.controller('AdminController', ['$scope', '$http', '$location', function($scope, $http, $location) {
   // This happens after view/controller loads -- not ideal but it works for now.
   console.log('checking user');
   $http.get('/user').then(function(response) {

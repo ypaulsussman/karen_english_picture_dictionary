@@ -17,11 +17,11 @@ myApp.config(['$routeProvider', function($routeProvider) {
     })
     .when('/student', {
       templateUrl: '/views/student.html',
-      controller: "UserController"
+      controller: "StudentController"
     })
     .when('/admin', {
       templateUrl: '/views/admin.html',
-      controller: "UserController"
+      controller: "AdminController"
     })
     .otherwise({
       redirectTo: 'home'
