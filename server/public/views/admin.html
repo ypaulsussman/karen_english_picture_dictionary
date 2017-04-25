@@ -1,6 +1,6 @@
 <div layout="row" layout-align="space-between center">
   <div class="">
-    <h1 class="md-display-1">Welcome, admin named {{userName}}!</h1>
+    <h1 class="md-display-1">Welcome, admin named {{userName.name}}!</h1>
   </div>
   <div class="">
     <md-button id="logout" class="md-raised md-warn" ng-click="logout()">Log Out</md-button>
@@ -69,25 +69,25 @@
         <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
           <thead md-head md-order="query.order">
             <tr md-row>
-              <th md-column md-order-by="type"><span>Theme</span></th>
-              <th md-column md-order-by="name"><span>Image URL</span></th>
-              <th md-column md-numeric md-order-by="calories.value" md-desc><span>English Answer</span></th>
-              <th md-column md-numeric md-order-by="fat.value"><span>Karen Translation</span></th>
-              <th md-column md-numeric md-order-by="carbs.value"><span>Karen Transcription</span></th>
+              <th md-column md-order-by="item_theme"><span>Theme</span></th>
+              <th md-column md-numeric md-order-by="item_answer_en" md-desc><span>English Answer</span></th>
+              <th md-column md-numeric md-order-by="item_answer_kn"><span>Karen Translation</span></th>
+              <th md-column md-numeric md-order-by="item_answer_phon_kn"><span>Karen Transcription</span></th>
+              <th md-column md-order-by="item_prompt"><span>Image URL</span></th>
             </tr>
           </thead>
           <tbody md-body>
-            <tr md-row md-select="dessert" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="dessert.calories.value > 400" ng-repeat="dessert in desserts.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-              <td md-cell>{{dessert.type}}</td>
-              <td md-cell>{{dessert.name}}</td>
-              <td md-cell>{{dessert.calories.value}}</td>
-              <td md-cell class="karen" id="testa">{{dessert.fat.value | number: 2}}</td>
-              <td md-cell class="karen">{{dessert.carbs.value}}</td>
+            <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="item in allItems.items | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+              <td md-cell>{{item.item_theme}}</td>
+              <td md-cell>{{item.item_answer_en}}</td>
+              <td md-cell class="karen" id="testa">{{item.item_answer_kn}}</td>
+              <td md-cell class="karen">{{item.item_answer_phon_kn}}</td>
+              <td md-cell>{{item.item_prompt}}</td>
             </tr>
           </tbody>
         </table>
       </md-table-container>
-      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{desserts.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{allItems.items.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
     </md-card>
 
   </div>

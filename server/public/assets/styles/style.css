@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'KNU';
+  src: url('knu.ttf')  format('truetype'),
+}
+
+.karen{
+  font-family: 'KNU', fantasy;
+}
+
+td.karen, input.karen{
+font-size: 22px !important;
+}
+
+
 .instructions .container h1 {
     font-size: 24px;
     font-weight: 700;
