@@ -12,12 +12,12 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', function($s
         console.log('sending to server...', $scope.user);
         $http.post('/', $scope.user).then(function(response) {
           if(response.data.username && response.data.role==="student") {
-            // console.log('success: your profile is...', response.data);
-            // console.log('redirecting to student page');
+            console.log('success: your profile is...', response.data);
+            console.log('redirecting to student page');
             $location.path('/student');
           } else if (response.data.username && response.data.role==="admin") {
-            // console.log('success: your profile is...', response.data);
-            // console.log('redirecting to admin page');
+            console.log('success: your profile is...', response.data);
+            console.log('redirecting to admin page');
             $location.path('/admin');
           } else {
             console.log('failure: ', response);
