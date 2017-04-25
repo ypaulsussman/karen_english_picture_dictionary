@@ -3,6 +3,7 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', 'ItemServic
   $scope.userName = UserService.user;
   ItemService.getAllItems();
   $scope.allItems = ItemService.allItems;
+  var editing = false;
 
   //@TODO: abstract to UserService factory (prevent repetition with studentController)
   $scope.logout = function() {
@@ -13,7 +14,11 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', 'ItemServic
   };
 
   //sets dropdown & input fields for create/edit bar
-  $scope.themes = ('The Classroom; Months & Weather; My Apartment; Numbers; Transportation').split('; ').map(function (theme) { return { name: theme }; });
+  $scope.themes = ('The Classroom; Months & Weather; My Apartment; Numbers; Travelling').split('; ').map(function(theme) {
+    return {
+      name: theme
+    };
+  });
 
   $scope.clearFields = function functionName() {
     $scope.itemTheme = '';
@@ -23,19 +28,37 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', 'ItemServic
     $scope.itemURL = '';
   };
 
-  //functionality for submitting new/edited item
+//submits a new/edited item
   var item = {};
-  $scope.addItem = function() {
+  $scope.sendItem = function() {
     item.itemTheme = $scope.itemTheme;
     item.itemURL = $scope.itemURL;
     item.itemEN = $scope.itemEN;
     item.itemKN = $scope.itemKN;
     item.itemPron = $scope.itemPron;
-    ItemService.saveItem(item);
+    if (editing) {
+      editing = false;
+      item.id = $scope.itemID;
+      ItemService.updateItem(item);
+    } else {
+      ItemService.addItem(item);
+    }
     $scope.clearFields();
-  };//end logItem
+  }; //end logItem
 
-  //limits number of items appearing inside grid
+//grabs an item for editing
+  $scope.editItem = function(item) {
+    editing = true;
+    $scope.itemTheme = item.item_theme;
+    $scope.itemEN = item.item_answer_en;
+    $scope.itemKN = item.item_answer_kn;
+    $scope.itemPron = item.item_answer_phon_kn;
+    $scope.itemURL = item.item_prompt;
+    $scope.itemID = item.id;
+  };
+
+
+//limits number of items appearing inside grid
   $scope.query = {
     order: 'name',
     limit: 50,
@@ -43,4 +66,4 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', 'ItemServic
   };
 
 
-}]);//end controller
+}]); //end controller

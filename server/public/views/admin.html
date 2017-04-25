@@ -43,7 +43,7 @@
         </md-input-container>
 
         <md-input-container>
-          <md-button class="md-primary md-raised" ng-click="addItem()">Submit</button>
+          <md-button class="md-primary md-raised" ng-click="sendItem()">Submit</button>
         </md-input-container>
 
       </div>
@@ -81,7 +81,7 @@
           <tbody md-body>
             <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="item in allItems.items | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
               <td md-cell><md-button>Delete</md-button></td>
-              <td md-cell><md-button class="md-primary">Edit</md-button></td>
+              <td md-cell><md-button class="md-primary" ng-click="editItem(item)">Edit</md-button></td>
               <td md-cell>{{item.item_theme}}</td>
               <td md-cell>{{item.item_answer_en}}</td>
               <td md-cell class="karen" id="testa">{{item.item_answer_kn}}</td>

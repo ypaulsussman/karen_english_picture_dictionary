@@ -35,8 +35,6 @@ router.get('/', function(req, res) {
 });//end router.get
 
 router.post('/add', function(req, res) {
-  console.log("items add successfully touched");
-  console.log('item to add inside post: ', req.body);
   var itemTheme = req.body.itemTheme;
   var itemURL = req.body.itemURL;
   var itemEN = req.body.itemEN;
@@ -61,6 +59,32 @@ router.post('/add', function(req, res) {
     }
   });
 });//end router.post
+
+router.put('/update', function(req, res) {
+  var itemTheme = req.body.itemTheme;
+  var itemURL = req.body.itemURL;
+  var itemEN = req.body.itemEN;
+  var itemKN = req.body.itemKN;
+  var itemPron = req.body.itemPron;
+  var itemID = req.body.id;
+  pool.connect(function(errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      res.sendStatus(500);
+    } else {
+      db.query('UPDATE "items" SET "item_theme"=$1, "item_prompt"=$2, "item_answer_en"=$3, "item_answer_kn"=$4, "item_answer_phon_kn"=$5 WHERE "id" = $6;',
+      [itemTheme, itemURL, itemEN, itemKN, itemPron, itemID],
+      function(queryError, result) {
+        done();
+        if (queryError) {
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+    }
+  });
+});
+
 
 
 
