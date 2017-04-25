@@ -1,25 +1,21 @@
-myApp.controller('AdminController', ['$scope', '$http', '$location', 'ItemService', 'UserService', function($scope, $http, $location, ItemService, UserService) {
+myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog', 'ItemService', 'UserService', function($scope, $http, $location, $mdDialog, ItemService, UserService) {
   UserService.validateAdminRole();
   $scope.userName = UserService.user;
+  $scope.logout = UserService.logout;
+
   ItemService.getAllItems();
   $scope.allItems = ItemService.allItems;
   var editing = false;
 
-  //@TODO: abstract to UserService factory (prevent repetition with studentController)
-  $scope.logout = function() {
-    $http.get('/user/logout').then(function(response) {
-      console.log('logged out');
-      $location.path("/home");
-    });
-  };
 
-  //sets dropdown & input fields for create/edit bar
+  //sets dropdown for create/edit form @TODO: figure out *exactly* how .map is working here...
   $scope.themes = ('The Classroom; Months & Weather; My Apartment; Numbers; Travelling').split('; ').map(function(theme) {
     return {
       name: theme
     };
   });
 
+  //sets input fields for create/edit form
   $scope.clearFields = function functionName() {
     $scope.itemTheme = '';
     $scope.itemEN = '';
@@ -28,7 +24,7 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', 'ItemServic
     $scope.itemURL = '';
   };
 
-//submits a new/edited item
+  //submits a new/edited item. @TODO: create validation to ensure no partially-complete items.
   var item = {};
   $scope.sendItem = function() {
     item.itemTheme = $scope.itemTheme;
@@ -46,7 +42,7 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', 'ItemServic
     $scope.clearFields();
   }; //end logItem
 
-//grabs an item for editing
+  //displays an item for editing
   $scope.editItem = function(item) {
     editing = true;
     $scope.itemTheme = item.item_theme;
@@ -57,10 +53,22 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', 'ItemServic
     $scope.itemID = item.id;
   };
 
-//sends an item to be deleted
-$scope.deleteItem = ItemService.deleteItem;
+  //sends an item to be deleted
+  $scope.deleteItem = ItemService.deleteItem;
 
-//limits number of items appearing inside grid
+  $scope.showConfirm = function(item) {
+    var confirm = $mdDialog.confirm()
+      .title('Are you sure you want to delete this item?')
+      .textContent('This will remove the item forever.')
+      .ok('Yes')
+      .cancel('No');
+    $mdDialog.show(confirm).then(function() {
+      $scope.deleteItem(item);
+    });
+  };
+
+
+  //limits number of items appearing inside grid
   $scope.query = {
     order: 'name',
     limit: 50,

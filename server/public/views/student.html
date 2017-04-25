@@ -1,5 +1,20 @@
-    <h1>it's the student page</h1>
-    <div>
-        <h1 id="welcome" class="lead">Welcome, student named {{userName}}!</h1>
-        <button class="btn btn-default" ng-click="logout()">Log Out</button>
-    </div>
+<!-- @TODO: make this header into a separate template file, with "role" in the welcome abstracted as another data-bound expression -->
+<div layout="row" layout-align="space-between center">
+  <div class="">
+    <h1 class="md-display-1">Welcome, student named {{userName.name}}!</h1>
+  </div>
+  <div class="">
+    <md-button id="logout" class="md-warn" ng-click="logout()">Log Out</md-button>
+  </div>
+</div>
+
+<div layout="row" layout-wrap>
+  <div flex="50" ng-click="logSup(imgName)" ng-repeat="imgName in imgNames">
+    <md-card>
+      <md-card-content layout="row" layout-align="center center" layout-wrap>
+        <img src="views/classroom/{{imgName}}" class="md-card-image" alt="image caption">
+        <span class="md-display-4 karen ib">Cardasdf</span>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

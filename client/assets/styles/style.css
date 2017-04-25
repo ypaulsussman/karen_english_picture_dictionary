@@ -22,7 +22,11 @@ font-size: 22px !important;
   margin-bottom: 20px;
 }
 
-/*Legacy styles from passport*/
+.ib{
+  display: inline-block;
+}
+
+/*================Legacy styles from passport demo================*/
 
 .instructions .container h1 {
     font-size: 24px;

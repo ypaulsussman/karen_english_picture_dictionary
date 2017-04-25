@@ -23,9 +23,7 @@ myApp.factory('ItemService', ['$http', function($http) {
   }
 
   function deleteItem(item) {
-    console.log('you gon get deleted!  ', item);
     var removeID = item.id;
-    console.log('itemservice param: ', removeID);
     $http.delete('/items/delete/'+removeID).then(function() {
       getAllItems();
     });

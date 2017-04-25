@@ -79,8 +79,8 @@
             </tr>
           </thead>
           <tbody md-body>
-            <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="item in allItems.items | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-              <td md-cell><md-button ng-click="deleteItem(item)">Delete</md-button></td>
+            <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="item in allItems.items | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+              <td md-cell><md-button ng-click="showConfirm(item)">Delete</md-button></td>
               <td md-cell><md-button class="md-primary" ng-click="editItem(item)">Edit</md-button></td>
               <td md-cell>{{item.item_theme}}</td>
               <td md-cell>{{item.item_answer_en}}</td>
