@@ -7,13 +7,11 @@ var config = {
   user: 'ypaulsussman',
   database: 'kepd',
   password: '',
-  //do you need host: 'localhost'  here? or is it covered by requiring the 'connection' above?
   port: 5432,
   max: 20,
   idleTimeoutMillis: 30000
 };
 
-//this initializes a connection pool
 var pool = new pg.Pool(config);
 
 router.get('/', function(req, res) {
@@ -42,7 +40,6 @@ router.post('/add', function(req, res) {
   var itemPron = req.body.itemPron;
   pool.connect(function(errorConnectingToDb, db, done) {
     if (errorConnectingToDb) {
-      console.log('error connecting: ', errorConnectingToDb);
       res.sendStatus(500);
     } else {
       db.query('INSERT INTO "items" ("item_theme", "item_prompt", "item_answer_en", "item_answer_kn", "item_answer_phon_kn") VALUES ($1,$2,$3,$4,$5);', //--> $1 b/c NOT zero-indexed; $1 refers to "author" in the line below
@@ -50,7 +47,6 @@ router.post('/add', function(req, res) {
       function(queryError, result) {
         done();
         if (queryError) {
-          console.log("error querying: ", queryError);
           res.sendStatus(500);
         } else {
           res.sendStatus(201);
@@ -83,6 +79,29 @@ router.put('/update', function(req, res) {
       });
     }
   });
+});//end router.put
+
+router.delete('/delete/:id', function(req, res) {
+  var itemID = req.params.id;
+  console.log('inside the item service, the item id is: ', itemID);
+  pool.connect(function(errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      console.log('error connecting: ', errorConnectingToDb);
+      res.sendStatus(500);
+    } else {
+      db.query('DELETE FROM "items" WHERE "id" = $1;',
+      [itemID],
+      function(queryError, result) {
+        done();
+        if (queryError) {
+          console.log("error querying: ", queryError);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+    }
+  });
 });
 
 
@@ -90,4 +109,3 @@ router.put('/update', function(req, res) {
 
 
 module.exports = router;
-//who calls this module?

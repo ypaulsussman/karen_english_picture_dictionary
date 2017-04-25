@@ -57,6 +57,8 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', 'ItemServic
     $scope.itemID = item.id;
   };
 
+//sends an item to be deleted
+$scope.deleteItem = ItemService.deleteItem;
 
 //limits number of items appearing inside grid
   $scope.query = {
