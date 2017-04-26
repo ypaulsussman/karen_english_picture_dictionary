@@ -15,6 +15,7 @@ td.karen, input.karen{
 font-size: 22px !important;
 }
 
+/*md-card had several built-in layout issues; it was faster/cleaner to use this for the admin submit form*/
 .cardApprox{
   height: 100px;
   width: 100%;
@@ -22,8 +23,18 @@ font-size: 22px !important;
   margin-bottom: 20px;
 }
 
-.ib{
-  display: inline-block;
+/*ensures no text-image overlap in individual-item view*/
+.prompt_img{
+  margin-right: 3em;
+}
+
+/*aligns text on student-lander theme buttons*/
+.themeButton{
+  text-align: center;
+}
+
+.theme_cardholder{
+  margin-bottom: 7em;
 }
 
 /*================Legacy styles from passport demo================*/

@@ -37,6 +37,9 @@ function logout() {
   });
 }//end logout
 
+
+
+
 return{
   validateAdminRole: validateAdminRole,
   validateStudentRole: validateStudentRole,

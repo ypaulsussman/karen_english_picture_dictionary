@@ -29,6 +29,12 @@ myApp.factory('ItemService', ['$http', function($http) {
     });
   }
 
+function getThemes() {
+  $http.get('/items/themes').then(function(response) {
+    console.log(response.data);
+    allItems.items = response.data;
+  });
+}
 
   return {
     getAllItems: getAllItems,
@@ -36,6 +42,7 @@ myApp.factory('ItemService', ['$http', function($http) {
     addItem: addItem,
     updateItem: updateItem,
     deleteItem: deleteItem,
+    getThemes: getThemes,
   }; //end return
 
 }]); //end ItemService

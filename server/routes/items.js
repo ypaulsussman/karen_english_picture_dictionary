@@ -86,7 +86,6 @@ router.delete('/delete/:id', function(req, res) {
   console.log('inside the item service, the item id is: ', itemID);
   pool.connect(function(errorConnectingToDb, db, done) {
     if (errorConnectingToDb) {
-      console.log('error connecting: ', errorConnectingToDb);
       res.sendStatus(500);
     } else {
       db.query('DELETE FROM "items" WHERE "id" = $1;',
@@ -94,7 +93,6 @@ router.delete('/delete/:id', function(req, res) {
       function(queryError, result) {
         done();
         if (queryError) {
-          console.log("error querying: ", queryError);
           res.sendStatus(500);
         } else {
           res.sendStatus(201);
@@ -104,7 +102,26 @@ router.delete('/delete/:id', function(req, res) {
   });
 });
 
-
+router.get('/themes', function(req, res) {
+  console.log('we pinging the theme query');
+  pool.connect(function(errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      console.log('error connecting: ', errorConnectingToDb);
+      res.sendStatus(500);
+    } else {
+      db.query('SELECT DISTINCT "item_theme" from "items" ORDER BY "item_theme" DESC;',
+      function(queryError, result) {
+        done();
+        if (queryError) {
+          console.log("error querying: ", queryError);
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+      });
+    }
+  });
+});//end router.get
 
 
 

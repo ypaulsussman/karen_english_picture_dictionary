@@ -11,13 +11,21 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/register.html',
       controller: "LoginController"
     })
+    .when('/admin', {
+      templateUrl: '/views/admin.html',
+      controller: "AdminController"
+    })
     .when('/student', {
       templateUrl: '/views/student.html',
       controller: "StudentController"
     })
-    .when('/admin', {
-      templateUrl: '/views/admin.html',
-      controller: "AdminController"
+    .when('/theme', {
+      templateUrl: '/views/theme.html',
+      controller: "ThemeController"
+    })
+    .when('/entry', {
+      templateUrl: '/views/entry.html',
+      controller: "EntryController"
     })
     .otherwise({
       redirectTo: 'home'

@@ -4,4 +4,8 @@ myApp.controller('StudentController', ['$scope', '$http', '$location', 'ItemServ
   $scope.userName = UserService.user;
   $scope.logout = UserService.logout;
 
+  ItemService.getThemes();
+  $scope.allItems = ItemService.allItems;
+
+
 }]);
