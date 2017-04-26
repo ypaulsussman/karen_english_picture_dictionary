@@ -103,7 +103,6 @@ router.delete('/delete/:id', function(req, res) {
 
 router.get('/themed/:id', function(req, res) {
   var themeID = req.params.id;
-  console.log('on the server, the theme id is: ', themeID);
   pool.connect(function(errorConnectingToDb, db, done) {
     if (errorConnectingToDb) {
       console.log('error connecting: ', errorConnectingToDb);
@@ -117,7 +116,6 @@ router.get('/themed/:id', function(req, res) {
           console.log('error querying: ', queryError);
           res.sendStatus(500);
         } else {
-          console.log(result);
           res.send(result.rows);
         }
       });

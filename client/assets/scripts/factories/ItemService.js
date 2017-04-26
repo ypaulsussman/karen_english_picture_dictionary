@@ -1,6 +1,7 @@
 myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   var allItems = {};
   var themedItems = {};
+  var entryItem={};
 
   function getAllItems() {
     $http.get('/items').then(function(response) {
@@ -17,7 +18,6 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
 
   function updateItem(item) {
     var copy = angular.copy[item];
-    console.log('new copied item at ItemService: ', item);
     $http.put('/items/update', item).then(function(response) {
       getAllItems();
     });
@@ -54,16 +54,20 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
 
   function routeToTheme(theme) {
     $location.path("/theme");
+    //@TODO: see themeController.js
     getThemedItems(theme);
   }
 
   function getThemedItems(theme) {
-    console.log("here's the theme: ", theme);
     var themeID = theme.name;
     $http.get('/items/themed/'+themeID).then(function(response) {
-      console.log('you get this from the database: ', response.data);
       themedItems.items = response.data;
     });
+  }
+
+  function openEntry(item) {
+    $location.path("/entry");
+    entryItem.item = item;
   }
 
   return {
@@ -75,6 +79,8 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     themes: themes,
     routeToTheme: routeToTheme,
     themedItems: themedItems,
+    openEntry: openEntry,
+    entryItem: entryItem,
   }; //end return
 
 }]); //end ItemService
