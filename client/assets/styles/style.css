@@ -3,7 +3,7 @@
   src: url('knu.ttf')  format('truetype'),
 }
 
-#logout{
+#logoutAdmin, #logoutStudent{
   color: red;
 }
 
@@ -38,7 +38,7 @@ font-size: 22px !important;
   margin-bottom: 7em;
 }
 
-.md-fab {
+.md-fab{
   height: 10em !important;
   width: 10em  !important;
 }
@@ -48,6 +48,11 @@ font-size: 22px !important;
   width: 8em  !important;
 }
 
+#logoutStudent{
+  height: 3em;
+  width: 6em;
+  font-size: 3em;
+}
 
 /*================Legacy styles from passport demo================*/
 
