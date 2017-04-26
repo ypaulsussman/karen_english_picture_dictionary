@@ -1,0 +1,39 @@
+<h1>this is the question page. more to follow.</h1>
+
+<div layout="column" class="entry_basket">
+
+  <div layout="row" layout-align="end start">
+    <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
+      <md-icon class="button_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
+    </md-button>
+  </div>
+
+  <h2>{{testItem.current}}</h2>
+
+
+  <div layout="row" layout-align="center end" layout-wrap>
+    <md-card flex="80" md-whiteframe="12" layout-align="center center">
+      <md-card-content layout="row" layout-align="center center" layout-wrap>
+        <img src="/media/{{testItem.current.item_prompt}}" class="md-card-image" alt="image caption">
+      </md-card-content>
+      <md-card-content layout="row" layout-align="center center" layout-wrap>
+        <span class="md-display-4 karen">{{testItem.current.item_answer_kn}}</span>
+      </md-card-content>
+      <md-card-content layout="row" layout-align="space-between center"layout-wrap>
+        <div flex="40" flex-offset="10" layout-align="center center">
+          <md-button md-no-ink class="md-primary testAnswers">{{testItem.current.item_answer_en}}</md-button>
+        </div>
+        <div flex="40" flex-offset="10" layout-align="center center">
+          <md-button md-no-ink class="md-primary testAnswers">{{testItem.current.item_answer_en}}</md-button>
+        </div>
+        <div flex="40" flex-offset="10" layout-align="center center">
+          <md-button md-no-ink class="md-primary testAnswers">{{testItem.current.item_answer_en}}</md-button>
+        </div>
+        <div flex="40" flex-offset="10" layout-align="center center">
+          <md-button md-no-ink class="md-primary testAnswers">{{testItem.current.item_answer_en}}</md-button>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+
+</div>

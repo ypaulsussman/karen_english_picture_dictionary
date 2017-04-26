@@ -99,7 +99,7 @@ router.delete('/delete/:id', function(req, res) {
       });
     }
   });
-});
+});//end router.delete
 
 router.get('/themed/:id', function(req, res) {
   var themeID = req.params.id;
