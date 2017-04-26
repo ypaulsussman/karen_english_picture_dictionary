@@ -38,6 +38,17 @@ font-size: 22px !important;
   margin-bottom: 7em;
 }
 
+.md-fab {
+  height: 10em !important;
+  width: 10em  !important;
+}
+
+.button_icon{
+  height: 8em !important;
+  width: 8em  !important;
+}
+
+
 /*================Legacy styles from passport demo================*/
 
 .instructions .container h1 {
