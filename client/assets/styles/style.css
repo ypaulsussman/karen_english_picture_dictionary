@@ -28,11 +28,12 @@ font-size: 22px !important;
   margin-right: 3em;
 }
 
-/*aligns text on student-lander theme buttons*/
+/*aligns text on student-lander theme cards*/
 .themeButton{
   text-align: center;
 }
 
+/*spaces theme cards on student lander*/
 .theme_cardholder{
   margin-bottom: 7em;
 }

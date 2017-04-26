@@ -70,6 +70,10 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     entryItem.item = item;
   }
 
+  function backToThemes() {
+    $location.path("/student");
+  }
+
   return {
     getAllItems: getAllItems,
     allItems: allItems,
@@ -81,6 +85,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     themedItems: themedItems,
     openEntry: openEntry,
     entryItem: entryItem,
+    backToThemes: backToThemes,
   }; //end return
 
 }]); //end ItemService
