@@ -13,10 +13,17 @@
     <!-- @TODO: or use the 'card approx' class? add reference image? -->
     <md-card md-whiteframe="8">
       <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-4 themeButton karen">{{theme.nameKN}}</span>
+        <span class="md-display-4 karen karen_theme">{{theme.nameKN}}</span>
       </md-card-content>
       <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-2 themeButton">{{theme.name}}</span>
+        <div flex="80" layout="column" layout-align="center center" >
+          <span class="md-display-4 english_theme">{{theme.name}}</span>
+        </div>
+        <div flex="20" layout="column" layout-wrap>
+          <md-button ng-click="" class="launch_test" aria-label="Go to test" >
+            <md-icon class="button_icon" md-svg-src="/media/icons/ic_assignment_white_48px.svg"></md-icon>
+          </md-button>
+        </div>
       </md-card-content>
     </md-card>
   </div>

@@ -5,12 +5,15 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
   $scope.entryItem = ItemService.entryItem;
   $scope.routeToTheme = ItemService.routeToTheme;
 
+//@TODO: abstract the 'return to themed items list' function to a factory
   $scope.backToItems = function() {
     var theme = {};
     theme.name = $scope.entryItem.item.item_theme;
     $scope.routeToTheme(theme);
   };
 
+//@TODO: abstract the WebSpeech call to a factory
+//@TODO: alter rate of speech to be slower
   var text = $scope.entryItem.item.item_answer_en;
   var synth = window.speechSynthesis;
 

@@ -7,13 +7,30 @@
   color: red;
 }
 
+#logoutStudent{
+  height: 3em;
+  width: 6em;
+  font-size: 3em;
+}
+
 .karen{
   font-family: 'KNU', fantasy;
 }
 
 td.karen, input.karen{
-font-size: 22px !important;
+  font-size: 22px !important;
 }
+
+.karen_theme{
+  font-size: 12em;
+  padding-top: .25em;
+
+}
+
+.karen_theme, .english_theme{
+  text-align: center;
+}
+
 
 /*md-card had several built-in layout issues; it was faster/cleaner to use this for the admin submit form*/
 .cardApprox{
@@ -28,19 +45,21 @@ font-size: 22px !important;
   margin-right: 3em;
 }
 
-/*aligns text on student-lander theme cards*/
-.themeButton{
-  text-align: center;
-}
-
 /*spaces theme cards on student lander*/
 .theme_cardholder{
   margin-bottom: 7em;
 }
 
-.md-fab{
+.md-fab, .md-icon-button{
   height: 10em !important;
   width: 10em  !important;
+}
+
+.launch_test{
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border-radius: 10px;
+  background-color: CornflowerBlue;
 }
 
 .button_icon{
@@ -48,11 +67,6 @@ font-size: 22px !important;
   width: 8em  !important;
 }
 
-#logoutStudent{
-  height: 3em;
-  width: 6em;
-  font-size: 3em;
-}
 
 /*================Legacy styles from passport demo================*/
 
