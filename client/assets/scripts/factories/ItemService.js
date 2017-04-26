@@ -36,6 +36,19 @@ function getThemes() {
   });
 }
 
+  var themes = [
+    {name: 'The Classroom', nameKN: 'wDR \'X;'},
+    {name: 'Months & Weather', nameKN:'rlcd. uvHR oD. *DR' },
+    {name: 'My Apartment',nameKN:  '[H. \'X; zSd.'},
+    {name: 'Numbers',nameKN: 'eD. *H>'},
+    {name: 'Travelling', nameKN: 'w> vJR w> uhR'},];
+
+  // ('The Classroom; Months & Weather; My Apartment; Numbers; Travelling').split('; ').map(function(theme) {
+  //   return {
+  //     name: theme
+  //   };
+  // });
+
   return {
     getAllItems: getAllItems,
     allItems: allItems,
@@ -43,6 +56,7 @@ function getThemes() {
     updateItem: updateItem,
     deleteItem: deleteItem,
     getThemes: getThemes,
+    themes:themes,
   }; //end return
 
 }]); //end ItemService

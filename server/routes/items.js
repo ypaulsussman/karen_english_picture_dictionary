@@ -113,9 +113,9 @@ router.get('/themes', function(req, res) {
       function(queryError, result) {
         done();
         if (queryError) {
-          console.log("error querying: ", queryError);
           res.sendStatus(500);
         } else {
+          console.log(result);
           res.send(result.rows);
         }
       });

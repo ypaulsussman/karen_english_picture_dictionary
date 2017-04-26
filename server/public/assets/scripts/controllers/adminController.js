@@ -9,11 +9,12 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog'
 
 
   //sets dropdown for create/edit form @TODO: figure out *exactly* how .map is working here...
-  $scope.themes = ('The Classroom; Months & Weather; My Apartment; Numbers; Travelling').split('; ').map(function(theme) {
-    return {
-      name: theme
-    };
-  });
+  $scope.themes = ItemService.themes;
+  // ('The Classroom; Months & Weather; My Apartment; Numbers; Travelling').split('; ').map(function(theme) {
+  //   return {
+  //     name: theme
+  //   };
+  // });
 
   //sets input fields for create/edit form
   $scope.clearFields = function functionName() {
