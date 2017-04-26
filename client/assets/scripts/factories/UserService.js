@@ -22,9 +22,14 @@ function validateStudentRole() {
       // user has a current session on the server? They can stay.
       if(response.data.username) {
           user.name = response.data.username;
-          $location.path("/student");
+          //@TODO: a little hacky, but: the lines below route a student-user to the "student" lander on login,
+          // and otherwise allow them to stay on current page... right? Explore further: this smells.
+          if ($location.url()==="/student") {
+            $location.path("/student");
+          }
       } else {
       // user has no session? back to the login.
+      console.log("here's what the failed student validation returns: ", response.data);
           $location.path("/home");
       }
   });//end session validation

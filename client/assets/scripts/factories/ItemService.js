@@ -1,5 +1,6 @@
-myApp.factory('ItemService', ['$http', function($http) {
+myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   var allItems = {};
+  var themedItems = {};
 
   function getAllItems() {
     $http.get('/items').then(function(response) {
@@ -24,30 +25,46 @@ myApp.factory('ItemService', ['$http', function($http) {
 
   function deleteItem(item) {
     var removeID = item.id;
-    $http.delete('/items/delete/'+removeID).then(function() {
+    $http.delete('/items/delete/' + removeID).then(function() {
       getAllItems();
     });
   }
 
-function getThemes() {
-  $http.get('/items/themes').then(function(response) {
-    console.log(response.data);
-    allItems.items = response.data;
-  });
-}
+  var themes = [{
+      name: 'The Classroom',
+      nameKN: 'wDR \'X;'
+    },
+    {
+      name: 'Months and Weather',
+      nameKN: 'rlcd. uvHR oD. *DR'
+    },
+    {
+      name: 'At Home',
+      nameKN: '[H. \'X; zSd.'
+    },
+    {
+      name: 'Numbers',
+      nameKN: 'eD. *H>'
+    },
+    {
+      name: 'Travelling',
+      nameKN: 'w> vJR w> uhR'
+    },
+  ];
 
-  var themes = [
-    {name: 'The Classroom', nameKN: 'wDR \'X;'},
-    {name: 'Months & Weather', nameKN:'rlcd. uvHR oD. *DR' },
-    {name: 'My Apartment',nameKN:  '[H. \'X; zSd.'},
-    {name: 'Numbers',nameKN: 'eD. *H>'},
-    {name: 'Travelling', nameKN: 'w> vJR w> uhR'},];
+  function routeToTheme(theme) {
+    $location.path("/theme");
+    getThemedItems(theme);
+  }
 
-  // ('The Classroom; Months & Weather; My Apartment; Numbers; Travelling').split('; ').map(function(theme) {
-  //   return {
-  //     name: theme
-  //   };
-  // });
+  function getThemedItems(theme) {
+    console.log("here's the theme: ", theme);
+    var themeID = theme.name;
+    $http.get('/items/themed/'+themeID).then(function(response) {
+      console.log('you get this from the database: ', response.data);
+      themedItems.items = response.data;
+    });
+  }
 
   return {
     getAllItems: getAllItems,
@@ -55,8 +72,9 @@ function getThemes() {
     addItem: addItem,
     updateItem: updateItem,
     deleteItem: deleteItem,
-    getThemes: getThemes,
-    themes:themes,
+    themes: themes,
+    routeToTheme: routeToTheme,
+    themedItems: themedItems,
   }; //end return
 
 }]); //end ItemService

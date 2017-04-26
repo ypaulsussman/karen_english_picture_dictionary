@@ -3,9 +3,8 @@ myApp.controller('StudentController', ['$scope', '$http', '$location', 'ItemServ
   UserService.validateStudentRole();
   $scope.userName = UserService.user;
   $scope.logout = UserService.logout;
-  $scope.themes = ItemService.themes;
-  // ItemService.getThemes();
-  // $scope.allItems = ItemService.allItems;
 
+  $scope.themes = ItemService.themes;
+  $scope.routeToTheme = ItemService.routeToTheme;
 
 }]);

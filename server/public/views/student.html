@@ -9,9 +9,8 @@
 </div>
 
 <div layout="row" layout-wrap>
-  <!--below: add ng-click="openTheme(item)"   item in allItems.items item.item_theme-->
-  <div flex="80" flex-offset="10" ng-repeat="theme in themes" class="theme_cardholder">
-    <!-- or use the 'card approx' -->
+  <div flex="80" flex-offset="10" ng-click="routeToTheme(theme)" ng-repeat="theme in themes" class="theme_cardholder">
+    <!-- @TODO: or use the 'card approx' class? add reference image? -->
     <md-card md-whiteframe="8">
       <md-card-content layout="row" layout-align="center center" layout-wrap>
         <span class="md-display-4 themeButton karen">{{theme.nameKN}}</span>

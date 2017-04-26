@@ -83,7 +83,6 @@ router.put('/update', function(req, res) {
 
 router.delete('/delete/:id', function(req, res) {
   var itemID = req.params.id;
-  console.log('inside the item service, the item id is: ', itemID);
   pool.connect(function(errorConnectingToDb, db, done) {
     if (errorConnectingToDb) {
       res.sendStatus(500);
@@ -102,17 +101,20 @@ router.delete('/delete/:id', function(req, res) {
   });
 });
 
-router.get('/themes', function(req, res) {
-  console.log('we pinging the theme query');
+router.get('/themed/:id', function(req, res) {
+  var themeID = req.params.id;
+  console.log('on the server, the theme id is: ', themeID);
   pool.connect(function(errorConnectingToDb, db, done) {
     if (errorConnectingToDb) {
       console.log('error connecting: ', errorConnectingToDb);
       res.sendStatus(500);
     } else {
-      db.query('SELECT DISTINCT "item_theme" from "items" ORDER BY "item_theme" DESC;',
+      db.query('SELECT * from "items" WHERE "item_theme" = $1;',
+      [themeID],
       function(queryError, result) {
         done();
         if (queryError) {
+          console.log('error querying: ', queryError);
           res.sendStatus(500);
         } else {
           console.log(result);
