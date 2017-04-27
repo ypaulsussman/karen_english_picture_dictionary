@@ -6,12 +6,10 @@ myApp.controller('QuestionController', ['$scope', '$http', '$location', 'ItemSer
   $scope.testItem = ItemService.testItem;
 
   $scope.getAnswer = function(answer) {
-    console.log("here's answer inside function: ", answer);
-    console.log("here's what we want?  ", $scope.testItem.current.qOptions[answer]);
     if ($scope.testItem.current.qOptions[answer] === $scope.testItem.current.item_answer_en){
-      console.log("true");
+      $location.path("/answer");
     } else {
-      console.log("false");
+      $location.path("/answer");
     }
   };
 

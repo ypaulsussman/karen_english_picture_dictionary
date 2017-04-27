@@ -39,7 +39,6 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
       {name: 'Numbers', nameKN: 'eD. *H>' }, { name: 'Travelling', nameKN: 'w> vJR w> uhR' }, ];
 
   function routeToTheme(theme, takingTest) {
-    console.log('testing registers: ', takingTest);
     if (takingTest) {
       $location.path("/question");
     } else {
