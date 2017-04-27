@@ -1,4 +1,4 @@
-<div layout="column" ng-class="answerMeta.correctness ? 'answer_correct' : 'answer_incorrect'">
+<div layout="column" class="entry_basket">
 
   <div layout="row" layout-align="end start">
     <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
@@ -6,7 +6,11 @@
     </md-button>
   </div>
 
-  <div layout="row" layout-align="center end" layout-wrap>
+
+  <h1>congratulations, you finished!</h1>
+
+
+  <!-- <div layout="row" layout-align="center end" layout-wrap>
     <md-card flex="80" md-whiteframe="12" layout-align="center center">
       <md-card-content layout="row" layout-align="center center" layout-wrap>
         <img src="/media/{{testItem.current.item_prompt}}" class="md-card-image" alt="image caption">
@@ -35,7 +39,7 @@
         <md-icon class="button_icon" md-svg-src="/media/icons/ic_navigate_next_white_48px.svg"></md-icon>
       </md-button>
     </div>
-  </div>
+  </div> -->
 
 
 </div>

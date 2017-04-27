@@ -72,6 +72,13 @@ td.karen, input.karen{
   width: 8em  !important;
 }
 
+.answer_correct{
+  background-color: MediumAquamarine;
+}
+
+.answer_incorrect{
+  background-color: LightSalmon;
+}
 
 /*================Legacy styles from passport demo================*/
 

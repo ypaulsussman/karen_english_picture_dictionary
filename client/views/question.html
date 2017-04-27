@@ -1,5 +1,3 @@
-<h1>this is the question page. more to follow.</h1>
-
   <div layout="row" layout-align="end start">
     <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
       <md-icon class="button_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
@@ -15,6 +13,7 @@
         <span class="md-display-4 karen">{{testItem.current.item_answer_kn}}</span>
       </md-card-content>
       <!-- @TODO: make the below an ng-repeat -->
+      <!-- @TODO: give each answer its own row? -->
       <md-card-content layout="row" layout-align="space-between center"layout-wrap>
         <div flex="40" flex-offset="10" layout-align="center center">
           <md-button ng-click="getAnswer(0)" md-no-ink class="md-primary testAnswers">{{testItem.current.qOptions[0]}}</md-button>

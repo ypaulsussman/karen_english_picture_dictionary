@@ -6,6 +6,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   var testItem = {};
   var distractorNum = 0;
   var includedItems = [];
+  var answerMeta = {correctness: true};
 
   function getAllItems() {
     $http.get('/items').then(function(response) {
@@ -101,7 +102,26 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     }
   }
 
+  function getAnswer(answer) {
+    if (themedItems.items[(iterator-1)].qOptions[answer] === themedItems.items[(iterator-1)].item_answer_en){
+      answerMeta.correctness = true;
+      $location.path("/answer");
+    } else {
+      answerMeta.correctness = false;
+      $location.path("/answer");
+    }
+  }
 
+  function nextTestItem() {
+    if (iterator >= themedItems.items.length) {
+      console.log("that's it! you're finished");
+      $location.path("/completed");
+    } else {
+      $location.path("/question");
+      testItem.current = themedItems.items[iterator];
+      iterator++;
+    }
+  }
 
 
 
@@ -118,6 +138,9 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     entryItem: entryItem,
     backToThemes: backToThemes,
     testItem: testItem,
+    getAnswer: getAnswer,
+    nextTestItem: nextTestItem,
+    answerMeta: answerMeta,
   }; //end return
 
 }]); //end ItemService

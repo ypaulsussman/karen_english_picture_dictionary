@@ -35,7 +35,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/answer.html',
       controller: "AnswerController"
     })
-
+    .when('/completed', {
+      templateUrl: '/views/completed.html',
+      controller: "AnswerController"
+    })
     .otherwise({
       redirectTo: 'home'
     });

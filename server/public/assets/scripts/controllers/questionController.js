@@ -4,16 +4,8 @@ myApp.controller('QuestionController', ['$scope', '$http', '$location', 'ItemSer
   $scope.backToThemes = ItemService.backToThemes;
 
   $scope.testItem = ItemService.testItem;
-
-  $scope.getAnswer = function(answer) {
-    if ($scope.testItem.current.qOptions[answer] === $scope.testItem.current.item_answer_en){
-      $location.path("/answer");
-    } else {
-      $location.path("/answer");
-    }
-  };
-
-
+  $scope.getAnswer = ItemService.getAnswer;
+  
 
 
 
