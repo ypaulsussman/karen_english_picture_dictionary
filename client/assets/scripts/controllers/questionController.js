@@ -4,7 +4,6 @@ myApp.controller('QuestionController', ['$scope', '$http', '$location', 'ItemSer
   $scope.backToThemes = ItemService.backToThemes;
 
   $scope.testItem = ItemService.testItem;
-  console.log('as you load controller, the testItem is: ', $scope.testItem);
 
 
 

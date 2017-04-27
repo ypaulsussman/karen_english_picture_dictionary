@@ -73,9 +73,22 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
       return 0.5 - Math.random();
     });
     console.log('your first test item: ', themedItems.items[iterator]);
-    //go through each item in items and add 3 more properties: 'distractor1', 'distractor2', 'distractor3'
-    testItem.current = themedItems.items[iterator];
+
+    //make the below into a nested for-loop: below loop should occur three times (for three distractors),
+    //adding three distractors to each item in items
+    var distractorNum = Math.floor(Math.random() * (themedItems.items + 1));
+    console.log(distractorNum);
+    //first bracket is to access array index; second is bracket notation for object at that index.
+    //does this work?
+    themedItems.items[iterator]["distractor" + iterator2] = themedItems.items[distractorNum].item_answer_en;
+    console.log(themedItems.items[iterator]["distractor" + iterator2]);
+
+
+    //send first test item to question view
+    testItem.current = themedItems.items[0];
   }
+
+
 
 
 
