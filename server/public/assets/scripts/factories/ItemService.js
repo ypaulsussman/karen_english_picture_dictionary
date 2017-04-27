@@ -70,7 +70,9 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   function beginTest(themedItems) {
-    themedItems.items.sort(randomizeArray());
+    themedItems.items.sort(function(a, b){                             //randomizes arrays, somewhat
+      return 0.5 - Math.random();
+    });
     for (var i = 0; i < themedItems.items.length; i++) {                  //adds three random, unique distractors to each test item
       includedItems.push(i);
       for (var j = 1; j < 4; j++) {
@@ -78,16 +80,15 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
         themedItems.items[i]["distractor" + j] = themedItems.items[distractorNum].item_answer_en;
       }//end 'for loop j'
       includedItems = [];                                               //empties includedItems for next loop to use
-      themedItems.items[i].qOptions = [];
+      themedItems.items[i].qOptions = [];                                 //creates array of answers to display
       themedItems.items[i].qOptions.push(themedItems.items[i].distractor1);
       themedItems.items[i].qOptions.push(themedItems.items[i].item_answer_en);
       themedItems.items[i].qOptions.push(themedItems.items[i].distractor2);
       themedItems.items[i].qOptions.push(themedItems.items[i].distractor3);
-      themedItems.items[i].qOptions.sort(randomizeArray());
+      themedItems.items[i].qOptions.sort(function(a, b){                             //randomizes arrays, somewhat
+        return 0.5 - Math.random();
+      });
     }//end 'for loop i'
-    console.log("and here are all the test items, with distractors: ", themedItems.items);
-
-
     testItem.current = themedItems.items[iterator];                        //send first test item to question view; prepare for second question
     iterator++;
   }// end beginTest
@@ -101,10 +102,6 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     }
   }
 
-
-  function randomizeArray(a, b){                                     //randomizes array of test items
-    return 0.5 - Math.random();
-  }
 
 
 
