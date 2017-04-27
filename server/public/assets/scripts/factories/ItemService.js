@@ -70,9 +70,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   function beginTest(themedItems) {
-    themedItems.items.sort(function(a, b){                                //randomizes array of test items
-      return 0.5 - Math.random();
-    });
+    themedItems.items.sort(randomizeArray());
     for (var i = 0; i < themedItems.items.length; i++) {                  //adds three random, unique distractors to each test item
       includedItems.push(i);
       for (var j = 1; j < 4; j++) {
@@ -85,9 +83,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
       themedItems.items[i].qOptions.push(themedItems.items[i].item_answer_en);
       themedItems.items[i].qOptions.push(themedItems.items[i].distractor2);
       themedItems.items[i].qOptions.push(themedItems.items[i].distractor3);
-      themedItems.items[i].qOptions.sort(function(a, b){                                     //randomizes array of test items
-        return 0.5 - Math.random();
-      });
+      themedItems.items[i].qOptions.sort(randomizeArray());
     }//end 'for loop i'
     console.log("and here are all the test items, with distractors: ", themedItems.items);
 
@@ -106,7 +102,9 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
 
-
+  function randomizeArray(a, b){                                     //randomizes array of test items
+    return 0.5 - Math.random();
+  }
 
 
 
