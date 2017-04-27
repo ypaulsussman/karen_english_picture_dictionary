@@ -6,7 +6,11 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   var testItem = {};
   var distractorNum = 0;
   var includedItems = [];
-  var answerMeta = {correctness: true};
+  var answerMeta = {
+    correctness: true,
+    correctAnswerSum: 0,
+    totalAnswers: 0,
+  };
 
   function getAllItems() {
     $http.get('/items').then(function(response) {
@@ -66,6 +70,8 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
 
   //@TODO: if you don't expand this function, you can replace it in the HTML with an <a> tag
   function backToThemes() {
+    answerMeta.correctAnswerSum = 0;
+    answerMeta.totalAnswers = 0;
     $location.path("/student");
   }
 
@@ -105,6 +111,8 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   function getAnswer(answer) {
     if (themedItems.items[(iterator-1)].qOptions[answer] === themedItems.items[(iterator-1)].item_answer_en){
       answerMeta.correctness = true;
+      answerMeta.correctAnswerSum++;
+      console.log(answerMeta);
       $location.path("/answer");
     } else {
       answerMeta.correctness = false;
@@ -114,8 +122,9 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
 
   function nextTestItem() {
     if (iterator >= themedItems.items.length) {
-      console.log("that's it! you're finished");
       $location.path("/completed");
+      answerMeta.totalAnswers = iterator;
+      iterator = 0;
     } else {
       $location.path("/question");
       testItem.current = themedItems.items[iterator];

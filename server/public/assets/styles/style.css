@@ -80,6 +80,11 @@ td.karen, input.karen{
   background-color: LightSalmon;
 }
 
+.test_finished{
+  background-color: PaleTurquoise;
+}
+
+
 /*================Legacy styles from passport demo================*/
 
 .instructions .container h1 {
