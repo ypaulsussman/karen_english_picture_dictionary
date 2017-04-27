@@ -37,7 +37,6 @@ td.karen, input.karen{
   text-align: center;
 }
 
-
 /*md-card had several built-in layout issues; it was faster/cleaner to use this for the admin submit form*/
 .cardApprox{
   height: 100px;
@@ -52,8 +51,12 @@ td.karen, input.karen{
 }
 
 /*spaces theme cards on student lander*/
-.theme_cardholder, .qOption_cardholder{
+.theme_cardholder{
   margin-bottom: 7em;
+}
+
+.qOption_cardholder{
+  margin-top: 7em;
 }
 
 .md-fab, .md-icon-button{
