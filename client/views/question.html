@@ -12,21 +12,10 @@
       <md-card-content layout="row" layout-align="center center" layout-wrap>
         <span class="md-display-4 karen">{{testItem.current.item_answer_kn}}</span>
       </md-card-content>
-      <!-- @TODO: make the below an ng-repeat -->
-      <!-- @TODO: give each answer its own row? -->
-      <md-card-content layout="row" layout-align="space-between center"layout-wrap>
-        <div flex="40" flex-offset="10" layout-align="center center">
-          <md-button ng-click="getAnswer(0)" md-no-ink class="md-primary testAnswers">{{testItem.current.qOptions[0]}}</md-button>
+      <md-card-content layout="row" layout-align="center center" layout-wrap ng-repeat= "qOption in testItem.current.qOptions">
+        <div layout-align="center center" class="qOption_cardholder">
+          <span ng-click="getAnswer(qOption)" class="md-display-4 testAnswers">{{qOption}}</span>
         </div>
-        <div flex="40" flex-offset="10" layout-align="center center">
-          <md-button ng-click="getAnswer(1)" md-no-ink class="md-primary testAnswers">{{testItem.current.qOptions[1]}}</md-button>
-        </div>
-        <div flex="40" flex-offset="10" layout-align="center center">
-          <md-button ng-click="getAnswer(2)" md-no-ink class="md-primary testAnswers">{{testItem.current.qOptions[2]}}</md-button>
-        </div>
-        <div flex="40" flex-offset="10" layout-align="center center">
-          <md-button ng-click="getAnswer(3)" md-no-ink class="md-primary testAnswers">{{testItem.current.qOptions[3]}}</md-button>
-        </div>
-      </md-card-content>
+      <md-card-content>
     </md-card>
   </div>

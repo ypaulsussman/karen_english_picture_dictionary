@@ -108,11 +108,10 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     }
   }
 
-  function getAnswer(answer) {
-    if (themedItems.items[(iterator-1)].qOptions[answer] === themedItems.items[(iterator-1)].item_answer_en){
+  function getAnswer(qOption) {
+    if (qOption === themedItems.items[(iterator-1)].item_answer_en){
       answerMeta.correctness = true;
       answerMeta.correctAnswerSum++;
-      console.log(answerMeta);
       $location.path("/answer");
     } else {
       answerMeta.correctness = false;
@@ -131,6 +130,8 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
       iterator++;
     }
   }
+
+
 
 
 

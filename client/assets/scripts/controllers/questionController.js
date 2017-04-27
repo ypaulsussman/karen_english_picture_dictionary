@@ -5,14 +5,5 @@ myApp.controller('QuestionController', ['$scope', '$http', '$location', 'ItemSer
 
   $scope.testItem = ItemService.testItem;
   $scope.getAnswer = ItemService.getAnswer;
-  
-
-
-
-
-
-
-
-
 
 }]);

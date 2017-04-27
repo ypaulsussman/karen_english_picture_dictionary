@@ -14,8 +14,9 @@
 }
 
 .testAnswers{
-  height: 3em;
-  font-size: 4em;
+  /*height: 3em;
+  font-size: 4em;*/
+  color: CornflowerBlue;
 }
 
 .karen{
@@ -32,7 +33,7 @@ td.karen, input.karen{
 
 }
 
-.karen_theme, .english_theme{
+.karen_theme, .english_theme, .testAnswers{
   text-align: center;
 }
 
@@ -51,7 +52,7 @@ td.karen, input.karen{
 }
 
 /*spaces theme cards on student lander*/
-.theme_cardholder{
+.theme_cardholder, .qOption_cardholder{
   margin-bottom: 7em;
 }
 

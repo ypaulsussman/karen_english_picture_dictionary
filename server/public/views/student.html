@@ -1,11 +1,6 @@
-<!-- @TODO: make this header into a separate template file, with "role" in the welcome abstracted as another data-bound expression -->
-<div layout="row" layout-align="space-between center">
-  <div class="">
-    <h1 class="md-display-1">Welcome, student named {{userName.name}}!</h1>
-  </div>
-  <div class="">
+<!-- @TODO: make this header into a separate template file, to serve both this and admin.html (?) -->
+<div layout="row" layout-align="end center">
     <md-button id="logoutStudent" class="md-warn" ng-click="logout()">Log Out</md-button>
-  </div>
 </div>
 
 <div layout="row" layout-wrap>

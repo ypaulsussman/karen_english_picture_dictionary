@@ -13,7 +13,7 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
   };
 
 //@TODO: abstract the WebSpeech call to a factory
-//@TODO: alter rate of speech to be slower
+//@TODO: decrease rate of speech (see also AnswerController)
   var text = $scope.entryItem.item.item_answer_en;
   var synth = window.speechSynthesis;
 

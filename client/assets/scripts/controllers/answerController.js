@@ -4,20 +4,13 @@ myApp.controller('AnswerController', ['$scope', '$http', '$location', 'ItemServi
 
   $scope.testItem = ItemService.testItem;
   $scope.nextTestItem = ItemService.nextTestItem;
-
   $scope.answerMeta = ItemService.answerMeta;
 
-
-
-
-
-
-
-$scope.backToThemes = ItemService.backToThemes;
+  $scope.backToThemes = ItemService.backToThemes;
 
 
 //@TODO: abstract the WebSpeech call to a factory
-//@TODO: alter rate of speech to be slower
+//@TODO: decrease rate of speech (see also EntryController)
   var text = $scope.testItem.current.item_answer_en;
   var synth = window.speechSynthesis;
 
