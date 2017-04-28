@@ -13,21 +13,28 @@
   font-size: 3em;
 }
 
-#goToSearch{
+.goToSearch{
   height: 2em;
-  width: 6em;
+  width: 100%;
   font-size: 3em;
 }
-#searchIcon{
+
+.searchIcon{
   height: 1.5em;
   width: 1.5em;
 }
 
-.testAnswers{
-  /*height: 3em;
-  font-size: 4em;*/
+#searchingIcon{
+  height: 3.25em;
+  width:  3.25em;
+  background-color: CornflowerBlue;
+  border-radius: 10px;
+}
+
+.testAnswers {
   color: CornflowerBlue;
 }
+
 
 .karen{
   font-family: 'KNU', fantasy;

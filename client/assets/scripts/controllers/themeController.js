@@ -9,6 +9,15 @@ myApp.controller('ThemeController', ['$scope', '$http', '$location', 'ItemServic
   $scope.openEntry = ItemService.openEntry;
 
   $scope.allItems = ItemService.allItems;
+  $scope.searchTerm = '';
+
+  $scope.searchItems = function(nameValue) {
+    if (nameValue.includes($scope.searchTerm) || nameValue.toUpperCase().includes($scope.searchTerm) || nameValue.toLowerCase().includes($scope.searchTerm)  ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   $scope.backToThemes = ItemService.backToThemes;
 
