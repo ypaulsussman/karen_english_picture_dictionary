@@ -11,6 +11,7 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
 //@TODO: decrease rate of speech (see also AnswerController)
   var text = $scope.entryItem.item.item_answer_en;
   var synth = window.speechSynthesis;
+  var speechRate = 0.6;
 
   if (speechSynthesis.onvoiceschanged !== undefined) {
     speechSynthesis.onvoiceschanged = populateVoiceList;
@@ -23,6 +24,7 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
   $scope.readEntry = function() {
     var utterThis = new SpeechSynthesisUtterance(text);
     utterThis.voice = voices[45];
+    utterThis.rate = speechRate;
     synth.speak(utterThis);
   };
 
