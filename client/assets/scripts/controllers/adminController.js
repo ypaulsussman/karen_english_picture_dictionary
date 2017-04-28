@@ -8,13 +8,7 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog'
   var editing = false;
 
 
-  //sets dropdown for create/edit form @TODO: figure out *exactly* how .map is working here...
   $scope.themes = ItemService.themes;
-  // ('The Classroom; Months & Weather; My Apartment; Numbers; Travelling').split('; ').map(function(theme) {
-  //   return {
-  //     name: theme
-  //   };
-  // });
 
   //sets input fields for create/edit form
   $scope.clearFields = function functionName() {
@@ -25,23 +19,28 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog'
     $scope.itemURL = '';
   };
 
-  //submits a new/edited item. @TODO: create validation to ensure no partially-complete items.
+  //submits a new/edited item
   var item = {};
   $scope.sendItem = function() {
-    item.itemTheme = $scope.itemTheme;
-    item.itemURL = $scope.itemURL;
-    item.itemEN = $scope.itemEN;
-    item.itemKN = $scope.itemKN;
-    item.itemPron = $scope.itemPron;
-    if (editing) {
-      editing = false;
-      item.id = $scope.itemID;
-      ItemService.updateItem(item);
+    if (!$scope.itemTheme || !$scope.itemEN || !$scope.itemKN || !$scope.itemPron || !$scope.itemURL) {
+      console.log("please complete all items!");
+      $scope.showAlert();
     } else {
-      ItemService.addItem(item);
+      item.itemTheme = $scope.itemTheme;
+      item.itemURL = $scope.itemURL;
+      item.itemEN = $scope.itemEN;
+      item.itemKN = $scope.itemKN;
+      item.itemPron = $scope.itemPron;
+      if (editing) {
+        editing = false;
+        item.id = $scope.itemID;
+        ItemService.updateItem(item);
+      } else {
+        ItemService.addItem(item);
+      }
+      $scope.clearFields();
     }
-    $scope.clearFields();
-  }; //end logItem
+  };
 
   //displays an item for editing
   $scope.editItem = function(item) {
@@ -53,6 +52,19 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog'
     $scope.itemURL = item.item_prompt;
     $scope.itemID = item.id;
   };
+
+  //popup if new/edited item has empty fields
+  $scope.showAlert = function() {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .clickOutsideToClose(true)
+          .title('Please complete all fields!')
+          .textContent('You can\'t leave any spaces empty.')
+          .ariaLabel('Alert Dialog')
+          .ok('OK!')
+      );
+    };
+
 
   //sends an item to be deleted
   $scope.deleteItem = ItemService.deleteItem;
