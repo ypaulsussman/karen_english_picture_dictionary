@@ -88,9 +88,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   function beginTest(themedItems) {
-    themedItems.items.sort(function(a, b){                             //randomizes arrays, somewhat
-      return 0.5 - Math.random();
-    });
+    themedItems.items.sort(randomizeArray);
     for (var i = 0; i < themedItems.items.length; i++) {                  //adds three random, unique distractors to each test item
       includedItems.push(i);
       for (var j = 1; j < 4; j++) {
@@ -103,13 +101,15 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
       themedItems.items[i].qOptions.push(themedItems.items[i].item_answer_en);
       themedItems.items[i].qOptions.push(themedItems.items[i].distractor2);
       themedItems.items[i].qOptions.push(themedItems.items[i].distractor3);
-      themedItems.items[i].qOptions.sort(function(a, b){                             //randomizes arrays, somewhat
-        return 0.5 - Math.random();
-      });
+      themedItems.items[i].qOptions.sort(randomizeArray);
     }//end 'for loop i'
     testItem.current = themedItems.items[iterator];                        //send first test item to question view; prepare for second question
     iterator++;
   }// end beginTest
+
+  function randomizeArray(a, b){                             //randomizes arrays, somewhat
+    return 0.5 - Math.random();
+  }
 
   function createUniqueDistractor() {
     distractorNum = Math.floor(Math.random() * (themedItems.items.length)); //create a new random distractor index
