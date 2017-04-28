@@ -1,21 +1,21 @@
-  <div layout="row" layout-align="end start">
-    <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
-      <md-icon class="button_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
-    </md-button>
-  </div>
+<div layout="row" layout-align="end start">
+  <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
+    <md-icon class="button_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
+  </md-button>
+</div>
 
-  <div layout="row" layout-align="center end" layout-wrap>
-    <md-card flex="80" md-whiteframe="12" layout-align="center center">
-      <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <img src="/media/{{testItem.current.item_prompt}}" class="md-card-image" alt="image caption">
-      </md-card-content>
-      <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-4 karen karen_theme">{{testItem.current.item_answer_kn}}</span>
-      </md-card-content>
-      <md-card-content layout="row" layout-align="center center" layout-wrap ng-repeat= "qOption in testItem.current.qOptions">
-        <div layout-align="center center" class="qOption_cardholder">
-          <span ng-click="getAnswer(qOption)" class="md-display-4 testAnswers">{{qOption}}</span>
-        </div>
+<div layout="row" layout-align="center end" layout-wrap>
+  <md-card flex="80" md-whiteframe="12" layout-align="center center">
+    <md-card-content layout="row" layout-align="center center" layout-wrap>
+      <img src="/media/{{testItem.current.item_prompt}}" class="md-card-image" alt="image caption">
+    </md-card-content>
+    <md-card-content layout="row" layout-align="center center" layout-wrap>
+      <span class="md-display-4 karen karen_theme">{{testItem.current.item_answer_kn}}</span>
+    </md-card-content>
+    <md-card-content layout="row" layout-align="center center" layout-wrap ng-repeat="qOption in testItem.current.qOptions">
+      <div layout-align="center center" class="qOption_cardholder">
+        <span ng-click="getAnswer(qOption)" class="md-display-4 testAnswers">{{qOption}}</span>
+      </div>
       <md-card-content>
-    </md-card>
-  </div>
+  </md-card>
+</div>

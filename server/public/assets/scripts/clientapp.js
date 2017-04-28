@@ -19,6 +19,10 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/student.html',
       controller: "StudentController"
     })
+    .when('/search', {
+      templateUrl: '/views/search.html',
+      controller: "ThemeController"
+    })
     .when('/theme', {
       templateUrl: '/views/theme.html',
       controller: "ThemeController"

@@ -1,6 +1,14 @@
 <!-- @TODO: make this header into a separate template file, to serve both this and admin.html (?) -->
-<div layout="row" layout-align="end center">
+
+<div layout="row" layout-align="space-around center">
+  <div layout="column" layout-align="end center">
+    <md-button class="md-raised md-primary" id="goToSearch" ng-click="routeToSearch()">Search
+      <md-icon id="searchIcon" md-svg-src="/media/icons/ic_search_white_48px.svg"></md-icon>
+    </md-button>
+  </div>
+  <div layout="column" layout-align="end center">
     <md-button id="logoutStudent" class="md-warn" ng-click="logout()">Log Out</md-button>
+  </div>
 </div>
 
 <div layout="row" layout-wrap>
@@ -10,11 +18,11 @@
         <span class="md-display-4 karen karen_theme">{{theme.nameKN}}</span>
       </md-card-content>
       <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <div flex="80" layout="column" layout-align="center center"  ng-click="routeToTheme(theme, false)">
+        <div flex="80" layout="column" layout-align="center center" ng-click="routeToTheme(theme, false)">
           <span class="md-display-4 english_theme">{{theme.name}}</span>
         </div>
         <div flex="20" layout="column" layout-wrap>
-          <md-button class="launch_test" aria-label="Go to test" ng-click="routeToTheme(theme, true)" >
+          <md-button class="launch_test" aria-label="Go to test" ng-click="routeToTheme(theme, true)">
             <md-icon class="button_icon" md-svg-src="/media/icons/ic_assignment_white_48px.svg"></md-icon>
           </md-button>
         </div>

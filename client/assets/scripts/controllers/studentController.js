@@ -6,4 +6,6 @@ myApp.controller('StudentController', ['$scope', '$http', '$location', 'ItemServ
   $scope.themes = ItemService.themes;
   $scope.routeToTheme = ItemService.routeToTheme;
 
+  $scope.routeToSearch = ItemService.routeToSearch;
+
 }]);

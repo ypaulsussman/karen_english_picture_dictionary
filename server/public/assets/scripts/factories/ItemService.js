@@ -52,6 +52,13 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     getThemedItems(theme, takingTest);
   }
 
+  function routeToSearch(){
+    console.log('search function clicked!');
+    $location.path("/search");
+    getAllItems();
+  }
+
+
   function getThemedItems(theme, takingTest) {
     var themeID = theme.name;
     $http.get('/items/themed/'+themeID).then(function(response) {
@@ -68,7 +75,6 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     entryItem.item = item;
   }
 
-  //@TODO: if you don't expand this function, you can replace it in the HTML with an <a> tag
   function backToThemes() {
     answerMeta.correctAnswerSum = 0;
     answerMeta.totalAnswers = 0;
@@ -143,6 +149,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     deleteItem: deleteItem,
     themes: themes,
     routeToTheme: routeToTheme,
+    routeToSearch: routeToSearch,
     themedItems: themedItems,
     openEntry: openEntry,
     entryItem: entryItem,

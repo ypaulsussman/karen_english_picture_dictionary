@@ -13,6 +13,16 @@
   font-size: 3em;
 }
 
+#goToSearch{
+  height: 2em;
+  width: 6em;
+  font-size: 3em;
+}
+#searchIcon{
+  height: 1.5em;
+  width: 1.5em;
+}
+
 .testAnswers{
   /*height: 3em;
   font-size: 4em;*/

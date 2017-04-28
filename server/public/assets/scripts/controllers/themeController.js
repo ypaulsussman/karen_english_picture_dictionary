@@ -7,6 +7,9 @@ myApp.controller('ThemeController', ['$scope', '$http', '$location', 'ItemServic
 
   $scope.themedItems = ItemService.themedItems;
   $scope.openEntry = ItemService.openEntry;
+
+  $scope.allItems = ItemService.allItems;
+
   $scope.backToThemes = ItemService.backToThemes;
 
 }]);
