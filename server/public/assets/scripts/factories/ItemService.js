@@ -11,6 +11,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     correctAnswerSum: 0,
     totalAnswers: 0,
   };
+  var searching = false;
 
   function getAllItems() {
     $http.get('/items').then(function(response) {
@@ -46,6 +47,9 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   function routeToTheme(theme, takingTest) {
     if (takingTest) {
       $location.path("/question");
+    } else if (searching) {
+      console.log("searching!");
+      $location.path("/search");
     } else {
       $location.path("/theme");
     }
@@ -54,6 +58,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
 
   function routeToSearch(){
     console.log('search function clicked!');
+    searching = true;
     $location.path("/search");
     getAllItems();
   }
@@ -76,6 +81,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   function backToThemes() {
+    searching = false;
     answerMeta.correctAnswerSum = 0;
     answerMeta.totalAnswers = 0;
     $location.path("/student");
