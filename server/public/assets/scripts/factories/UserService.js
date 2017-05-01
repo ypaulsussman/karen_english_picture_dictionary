@@ -1,5 +1,8 @@
 myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http, $location, $mdDialog) {
-  var user = {};
+  var user = {
+    username: '',
+    password: ''
+  };
 
   function validateAdminRole() {
     $http.get('/user').then(function(response) {
@@ -26,13 +29,13 @@ myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http,
 
   function logout() {
     $http.get('/user/logout').then(function(response) {
-      console.log('logged out');
       $location.path("/home");
     });
+    user.username = '';
+    user.password = '';
   }
 
   function go(path) {
-    console.log('triggering for ', path);
     $location.path(path);
   }
 
@@ -66,13 +69,57 @@ myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http,
      );
    }
 
+   function login() {
+    console.log("here's the user: ", user);
+     if(user.username === '' || user.password === '') {
+       loginAlert('incomplete');
+     } else {
+       console.log('sending to server...', user);
+       $http.post('/', user).then(function(response) {
+         if(response.data.username && response.data.role==="student") {
+           console.log('success: your profile is...', response.data);
+           console.log('redirecting to student page');
+           $location.path('/student');
+         } else if (response.data.username && response.data.role==="admin") {
+           console.log('success: your profile is...', response.data);
+           console.log('redirecting to admin page');
+           $location.path('/admin');
+         } else {
+           console.log('failure: ', response);
+           loginAlert('wrongPassword');
+         }
+       });
+     }
+   }
+
+   function registerUser() {
+     console.log("here's the user", user);
+     if(user.username === '' || user.password === '') {
+       loginAlert('incomplete');
+     } else {
+       console.log('sending to server...', user);
+       $http.post('/register', user).then(function(response) {
+         console.log('success');
+         loginAlert('userCreated');
+         $location.path('/home');
+       },
+       function(response) {
+         console.log('error');
+         UserCreationErrorAlert();
+       });
+     }
+   }
+
+
   return {
     validateAdminRole: validateAdminRole,
     validateStudentRole: validateStudentRole,
     user: user,
     logout: logout,
     go: go,
-    loginAlert: loginAlert
+    loginAlert: loginAlert,
+    login: login,
+    registerUser: registerUser,
   };
 
 }]); //end ItemService
