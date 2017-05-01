@@ -10,7 +10,7 @@ var config = {
   user: 'ypaulsussman', //env var: PGUSER
   database: 'kepd', //env var: PGDATABASE //--> be descriptive of what it's holding
   password: '', //env var: PGPASSWORD
-  port: 5432, //env var: PGPORT
+  // port: 5432, //env var: PGPORT
   max: 10, // max number of clients in the pool
   idleTimeoutMillis: 1500, // 1.5s // how long a client is allowed to remain idle before being closed
 };
@@ -21,13 +21,13 @@ var config = {
 var pool = new pg.Pool(config);
 console.log('clients connected: ', connectCount);
 
-var acquireCount = 0
+var acquireCount = 0;
 pool.on('acquire', function (client) {
   acquireCount++;
   console.log('client acquired: ', acquireCount);
-})
+});
 
-var connectCount = 0
+var connectCount = 0;
 pool.on('connect', function () {
   connectCount++;
   console.log('client connected: ', connectCount);
@@ -81,15 +81,11 @@ passport.use('local', new localStrategy({
     }, function(req, username, password, done) {
 	    pool.connect(function (err, client, release) {
 	    	console.log('called local - pg');
-
+        console.log('here is ');
         // assumes the username will be unique, thus returning 1 or 0 results
         client.query("SELECT * FROM users WHERE username = $1", [username],
           function(err, result) {
             var user = {};
-
-            console.log('here');
-
-            // Handle Errors
             if (err) {
               console.log('connection err ', err);
               done(null, user);
@@ -98,7 +94,7 @@ passport.use('local', new localStrategy({
             release();
             console.log(connectCount);
 
-            if(result.rows[0] != undefined) {
+            if(result.rows[0] !== undefined) {
               user = result.rows[0];
               console.log('User obj', user);
               // Hash and compare
