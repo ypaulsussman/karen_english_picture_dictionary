@@ -7,12 +7,12 @@ var pg = require('pg');
 //@TODO update pool config for Heroku deployment
 
 var config = {
-  user: 'ypaulsussman', //env var: PGUSER
-  database: 'kepd', //env var: PGDATABASE //--> be descriptive of what it's holding
-  password: '', //env var: PGPASSWORD
-  // port: 5432, //env var: PGPORT
+  user: process.env.PGUSER || 'ypaulsussman', //env var: PGUSER
+  database: process.env.PGDATABASE || 'kepd', //env var: PGDATABASE //--> be descriptive of what it's holding
+  password: process.env.PGPASSWORD || '', //env var: PGPASSWORD
+  port: process.env.PGPORT || 5432, //env var: PGPORT
   max: 10, // max number of clients in the pool
-  idleTimeoutMillis: 1500, // 1.5s // how long a client is allowed to remain idle before being closed
+  idleTimeoutMillis: 30000, // 1.5s // how long a client is allowed to remain idle before being closed
 };
 
 //this initializes a connection pool
@@ -80,8 +80,9 @@ passport.use('local', new localStrategy({
     usernameField: 'username'
     }, function(req, username, password, done) {
 	    pool.connect(function (err, client, release) {
-	    	console.log('called local - pg');
-        console.log('here is ');
+        if (err) {
+          console.log('here is the error from pool.connect on login: ', err);
+        }
         // assumes the username will be unique, thus returning 1 or 0 results
         client.query("SELECT * FROM users WHERE username = $1", [username],
           function(err, result) {
