@@ -40,6 +40,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     });
   }
 
+  //@TODO: if time allows, put this in its own table
   var themes = [{name: 'The Classroom', nameKN: 'wDR \'X;' }, { name: 'Months and Weather',
       nameKN: 'rlcd. uvHR oD. *DR' }, { name: 'At Home', nameKN: '[H. \'X; zSd.' },
       {name: 'Numbers', nameKN: 'eD. *H>' }, { name: 'Travelling', nameKN: 'w> vJR w> uhR' }, ];
@@ -142,10 +143,6 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
       iterator++;
     }
   }
-
-
-
-
 
   return {
     getAllItems: getAllItems,

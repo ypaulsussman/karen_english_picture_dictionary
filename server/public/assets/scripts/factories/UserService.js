@@ -29,14 +29,14 @@ myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http,
 
   function logout() {
     $http.get('/user/logout').then(function(response) {
-      $location.path("/home");
+      go("/home");
     });
-    user.username = '';
-    user.password = '';
   }
 
   function go(path) {
     $location.path(path);
+    user.username = '';
+    user.password = '';
   }
 
   function loginAlert(prompt) {
@@ -70,22 +70,15 @@ myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http,
    }
 
    function login() {
-    console.log("here's the user: ", user);
      if(user.username === '' || user.password === '') {
        loginAlert('incomplete');
      } else {
-       console.log('sending to server...', user);
        $http.post('/', user).then(function(response) {
          if(response.data.username && response.data.role==="student") {
-           console.log('success: your profile is...', response.data);
-           console.log('redirecting to student page');
            $location.path('/student');
          } else if (response.data.username && response.data.role==="admin") {
-           console.log('success: your profile is...', response.data);
-           console.log('redirecting to admin page');
            $location.path('/admin');
          } else {
-           console.log('failure: ', response);
            loginAlert('wrongPassword');
          }
        });
@@ -93,23 +86,19 @@ myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http,
    }
 
    function registerUser() {
-     console.log("here's the user", user);
      if(user.username === '' || user.password === '') {
        loginAlert('incomplete');
      } else {
-       console.log('sending to server...', user);
        $http.post('/register', user).then(function(response) {
-         console.log('success');
          loginAlert('userCreated');
-         $location.path('/home');
+         go('/home');
        },
        function(response) {
-         console.log('error');
+         console.log('error: ', response);
          UserCreationErrorAlert();
        });
      }
    }
-
 
   return {
     validateAdminRole: validateAdminRole,
