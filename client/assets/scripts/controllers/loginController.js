@@ -1,15 +1,18 @@
-myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserService', function($scope, $http, $location, UserService) {
+myApp.controller('LoginController', ['$scope', '$http', '$location', '$mdDialog', 'UserService', function($scope, $http, $location, $mdDialog, UserService) {
   $scope.go = UserService.go;
+  $scope.loginAlert = UserService.loginAlert;
 
-    $scope.user = {
+
+  $scope.user = {
       username: '',
       password: ''
     };
-    $scope.message = '';
+  $scope.message = '';
+
 
     $scope.login = function() {
       if($scope.user.username === '' || $scope.user.password === '') {
-        $scope.message = "Enter your username and password!";
+        $scope.loginAlert('incomplete');
       } else {
         console.log('sending to server...', $scope.user);
         $http.post('/', $scope.user).then(function(response) {
@@ -23,7 +26,7 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
             $location.path('/admin');
           } else {
             console.log('failure: ', response);
-            $scope.message = "Wrong!!";
+            $scope.loginAlert('wrongPassword');
           }
         });
       }
@@ -31,16 +34,17 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
 
     $scope.registerUser = function() {
       if($scope.user.username === '' || $scope.user.password === '') {
-        $scope.message = "Choose a username and password!";
+        $scope.loginAlert('incomplete');
       } else {
         console.log('sending to server...', $scope.user);
         $http.post('/register', $scope.user).then(function(response) {
           console.log('success');
+          $scope.loginAlert('userCreated');
           $location.path('/home');
         },
         function(response) {
           console.log('error');
-          $scope.message = "Please try again.";
+          $scope.UserCreationErrorAlert();
         });
       }
     };

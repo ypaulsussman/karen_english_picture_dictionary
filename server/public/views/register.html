@@ -5,7 +5,6 @@
       <md-card-title>
         <md-card-title-text layout-align="center center">
           <h1 id="landerMessageEN" class="md-display-1">Create a New User!</h1>
-          <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
         </md-card-title-text>
       </md-card-title>
       <md-card-content flex="40" flex-offset="30" layout-wrap layout-align="center center">
@@ -19,7 +18,7 @@
               <input type="password" ng-model="user.password" />
           </md-input-container>
           <md-input-container layout-align="space-between center">
-              <md-button class="md-raised" ng-click="go('/home')">Register</md-button>
+              <md-button class="md-raised" ng-click="go('/home')">Cancel</md-button>
               <md-button class="md-raised md-primary" type="submit">Submit</md-button>
           </md-input-container>
       </form>
