@@ -36,12 +36,17 @@ myApp.factory('UserService', ['$http', '$location', function($http, $location) {
     });
   }
 
+  function go(path) {
+    console.log('triggering for ', path);
+    $location.path(path);
+  }
 
   return {
     validateAdminRole: validateAdminRole,
     validateStudentRole: validateStudentRole,
     user: user,
     logout: logout,
+    go: go
   };
 
 }]); //end ItemService

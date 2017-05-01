@@ -1,4 +1,6 @@
-myApp.controller('LoginController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserService', function($scope, $http, $location, UserService) {
+  $scope.go = UserService.go;
+
     $scope.user = {
       username: '',
       password: ''

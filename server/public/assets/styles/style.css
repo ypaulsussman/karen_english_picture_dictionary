@@ -3,6 +3,19 @@
   src: url('knu.ttf')  format('truetype'),
 }
 
+#landerMessageEN{
+  text-align: center;
+}
+
+#landerContainer {
+position:fixed !important;
+position:absolute;
+top:0;
+right:0;
+bottom:0;
+left:0;
+}
+
 #logoutAdmin, #logoutStudent{
   color: red;
 }
@@ -101,7 +114,7 @@ td.karen, input.karen{
   background-color: LightSalmon;
 }
 
-.test_finished{
+.test_finished, #landerContainer{
   background-color: PaleTurquoise;
 }
 
