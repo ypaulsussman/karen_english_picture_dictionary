@@ -4,8 +4,6 @@ var encryptLib = require('../modules/encryption');
 var connection = require('../modules/connection');
 var pg = require('pg');
 
-//@TODO update pool config for Heroku deployment
-
 var config = {
   user: process.env.PGUSER || 'ypaulsussman', //env var: PGUSER
   database: process.env.PGDATABASE || 'kepd', //env var: PGDATABASE //--> be descriptive of what it's holding
