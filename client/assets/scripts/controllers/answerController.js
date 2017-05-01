@@ -10,9 +10,9 @@ myApp.controller('AnswerController', ['$scope', '$http', '$location', 'ItemServi
 
 
 //@TODO: abstract the WebSpeech call to a factory
-//@TODO: decrease rate of speech (see also EntryController)
   var text = $scope.testItem.current.item_answer_en;
   var synth = window.speechSynthesis;
+  var speechRate = 0.6;
 
   if (speechSynthesis.onvoiceschanged !== undefined) {
     speechSynthesis.onvoiceschanged = populateVoiceList;
@@ -25,6 +25,7 @@ myApp.controller('AnswerController', ['$scope', '$http', '$location', 'ItemServi
   $scope.readEntry = function() {
     var utterThis = new SpeechSynthesisUtterance(text);
     utterThis.voice = voices[45];
+    utterThis.rate = speechRate;
     synth.speak(utterThis);
   };
 

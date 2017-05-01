@@ -80,7 +80,6 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog'
     });
   };
 
-
   //limits number of items appearing inside grid
   $scope.query = {
     order: 'name',
