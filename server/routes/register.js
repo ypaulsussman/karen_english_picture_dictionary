@@ -2,10 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var path = require('path');
-
-// module with bcrypt functions
 var encryptLib = require('../modules/encryption');
-var connection = require('../modules/connection');
 var pg = require('pg');
 var pool = require('../modules/db');
 
@@ -41,26 +38,6 @@ router.post('/', function(req, res, next) {
           }
         });
   });
-
-
-  // pg.connect(connection, function(err, client, done) {
-  //   if(err) {
-  //     console.log("Error connecting: ", err);
-  //     next(err);
-  //   }
-  //   client.query("INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id",
-  //     [saveUser.username, saveUser.password],
-  //       function (err, result) {
-  //         client.end();
-  //
-  //         if(err) {
-  //           console.log("Error inserting data: ", err);
-  //           next(err);
-  //         } else {
-  //           res.redirect('/');
-  //         }
-  //       });
-  // });
 
 });
 
