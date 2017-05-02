@@ -13,10 +13,10 @@ html, body{
   position:absolute;
 }
 
-#loginHolder{
+/*#loginHolder{
   margin-top: 12em;
   margin-bottom: 12em;
-}
+}*/
 
 #logoutAdmin, #logoutStudent{
   color: red;
