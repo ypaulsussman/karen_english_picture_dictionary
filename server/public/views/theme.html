@@ -1,15 +1,15 @@
 <div layout="row" layout-align="end start">
   <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
-    <md-icon class="button_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
+    <md-icon class="exit_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
   </md-button>
 </div>
 
 <div layout="row" layout-wrap>
-  <div flex="50"  ng-click="openEntry(item)" ng-repeat="item in themedItems.items">
-    <md-card>
+  <div flex="90" flex-offset="5" ng-click="openEntry(item)" ng-repeat="item in themedItems.items">
+    <md-card layout-wrap>
       <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <img src="/media/{{item.item_prompt}}" class="md-card-image prompt_img" alt="image caption">
-        <span class="md-display-4 karen ib">{{item.item_answer_kn}}</span>
+        <img src="/media/{{item.item_prompt}}" class="md-card-image" alt="image caption">
+        <span class="karen karen_theme">{{item.item_answer_kn}}</span>
       </md-card-content>
     </md-card>
   </div>
