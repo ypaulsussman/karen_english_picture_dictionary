@@ -5,6 +5,8 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
   $scope.entryItem = ItemService.entryItem;
 
   $scope.routeToTheme = ItemService.routeToTheme;
+  $scope.searching = ItemService.searching;
+  $scope.routeToSearch = ItemService.routeToSearch;
 
 
 //@TODO: abstract the WebSpeech call to a factory
