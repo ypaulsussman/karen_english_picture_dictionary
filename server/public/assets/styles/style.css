@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'KNU';
-  src: url('./server/public/assets/styles/knu.ttf')  format('truetype');
+  src: url('knu.ttf')  format('truetype');
 }
 
 #landerMessageEN{
