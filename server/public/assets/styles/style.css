@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'KNU';
-  src: url('knu.ttf')  format('truetype'),
+  src: url('knu.ttf')  format('truetype');
 }
 
 #landerMessageEN{
@@ -13,15 +13,10 @@ html, body{
   position:absolute;
 }
 
-#landerContainer {
-/*position:fixed !important;*/
-position:absolute;
-height: 100%;
-width: 100%;
-/*top:0;
-right:0;
-bottom:0;
-left:0;*/
+#flagHolder {
+background-image: url('/media/Karen_National_Union_Flag.png');
+background-size: cover;
+padding: 12em;
 }
 
 #logoutAdmin, #logoutStudent{

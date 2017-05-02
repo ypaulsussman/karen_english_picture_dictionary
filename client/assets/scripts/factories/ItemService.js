@@ -16,8 +16,8 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   };
 
   /**
-   * This function routes through items.js to retrieve all dictionary entries;
-   *  it's used for the Admin view, and in the search mode of Student view.
+   * @desc routes through items.js to retrieve all dictionary entries;
+   * it's used for the Admin view, and in the search mode of Student view.
    */
   function getAllItems() {
     $http.get('/items').then(function(response) {
@@ -26,8 +26,8 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function routes through items.js to add a new dictionary entry.
    * @param {object} item - The entry to be added (specified in AdminController.)
+   * @desc routes through items.js to add a new dictionary entry.
    */
   function addItem(item) {
     var copy = angular.copy[item];
@@ -37,8 +37,8 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function routes through items.js to update a preexisting dictionary entry.
    * @param {object} item - The entry to be altered (specified in AdminController.)
+   * @desc routes through items.js to update a preexisting dictionary entry.
    */
   function updateItem(item) {
     var copy = angular.copy[item];
@@ -48,8 +48,8 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function routes through items.js to remove a dictionary entry, per its ID.
    * @param {object} item - The entry to be removed (specified in AdminController.)
+   * @desc routes through items.js to remove a dictionary entry, per its ID.
    */
   function deleteItem(item) {
     var removeID = item.id;
