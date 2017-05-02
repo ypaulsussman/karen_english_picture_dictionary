@@ -14,13 +14,16 @@
 <div layout="row" layout-wrap>
   <div flex="90" flex-offset="5" ng-repeat="theme in themes">
     <md-card md-whiteframe="8">
-      <md-card-content layout="row" layout-align="center center" layout-wrap ng-click="routeToTheme(theme, false)">
+      <div layout="row" layout-align="center center" layout-wrap ng-click="routeToTheme(theme, false)">
         <span class="karen karen_theme">{{theme.nameKN}}</span>
-      </md-card-content>
-      <md-card-content layout="row" layout-align="center start" layout-wrap ng-click="routeToTheme(theme, false)">
+      </div>
+      <div layout="row" layout-align="center start" layout-wrap ng-click="routeToTheme(theme, false)">
           <span class="md-display-1 english_theme">{{theme.name}}</span>
-      </md-card-content>
-        <md-card-content layout="row" layout-align="center start" layout-wrap>
+      </div>
+        <md-card-content layout="row" layout-align="space-around start" layout-wrap>
+          <md-button class="launch_test" aria-label="Browse theme" ng-click="routeToTheme(theme, false)">
+            <md-icon class="button_icon" md-svg-src="/media/icons/ic_remove_red_eye_white_48px.svg"></md-icon>
+          </md-button>
           <md-button class="launch_test" aria-label="Go to test" ng-click="routeToTheme(theme, true)">
             <md-icon class="button_icon" md-svg-src="/media/icons/ic_assignment_white_48px.svg"></md-icon>
           </md-button>
