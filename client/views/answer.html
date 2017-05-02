@@ -2,7 +2,7 @@
 
   <div layout="row" layout-align="end start">
     <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
-      <md-icon class="button_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
+      <md-icon class="exit_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
     </md-button>
   </div>
 
@@ -11,15 +11,15 @@
       <md-card-content layout="row" layout-align="center center" layout-wrap>
         <img src="/media/{{testItem.current.item_prompt}}" class="md-card-image" alt="image caption">
       </md-card-content>
-      <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-4 karen">{{testItem.current.item_answer_kn}}</span>
+      <md-card-content layout="row" layout-align="center center">
+        <span class="karen karen_theme itemInfo">{{testItem.current.item_answer_kn}}</span>
       </md-card-content>
       <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-3">English: {{testItem.current.item_answer_en}}</span>
+        <span class="md-display-1 itemInfo">English: {{testItem.current.item_answer_en}}</span>
       </md-card-content>
       <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-3">You say:</span>
-        <span class="md-display-4 karen">{{testItem.current.item_answer_phon_kn}}</span>
+        <span class="md-display-1 itemInfo">You say:</span>
+        <span class="karen karen_theme itemInfo">{{testItem.current.item_answer_phon_kn}}</span>
       </md-card-content>
     </md-card>
   </div>
@@ -27,12 +27,12 @@
   <div layout="row" layout-align="center center">
     <div flex="50" layout="column" layout-align="start start">
       <md-button ng-click="readEntry()" class="md-fab" aria-label="Read Word">
-        <md-icon class="button_icon" md-svg-src="/media/icons/ic_hearing_white_48px.svg"></md-icon>
+        <md-icon class="exit_icon" md-svg-src="/media/icons/ic_hearing_white_48px.svg"></md-icon>
       </md-button>
     </div>
     <div flex="50" layout="column" layout-align="end end">
       <md-button ng-click="nextTestItem()" class="md-fab md-primary" aria-label="Read Word">
-        <md-icon class="button_icon" md-svg-src="/media/icons/ic_navigate_next_white_48px.svg"></md-icon>
+        <md-icon class="exit_icon" md-svg-src="/media/icons/ic_navigate_next_white_48px.svg"></md-icon>
       </md-button>
     </div>
   </div>

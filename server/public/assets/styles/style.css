@@ -3,9 +3,6 @@
   src: url('knu.ttf');
 }
 
-#landerMessageEN{
-  text-align: center;
-}
 
 html, body{
   height: 100%;
@@ -80,7 +77,7 @@ tr>th>span{
   font-size: 4em;
 }
 
-.karen_theme, .english_theme, .testAnswers{
+.karen_theme, .english_theme, .testAnswers, .itemInfo, #landerMessageEN{
   text-align: center;
 }
 
