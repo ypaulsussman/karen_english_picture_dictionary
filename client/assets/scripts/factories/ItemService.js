@@ -59,9 +59,9 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This is an array of objects representing the Karen and English words for
+   * @desc an array of objects representing the Karen and English words for
    * each theme displayed in the Student view.
-   * @TODO: if time allows, put this in its own table.
+   * @TODO: transfer these themes to their own db table.
    */
   var themes = [{
       name: 'The Classroom',
@@ -83,7 +83,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   ];
 
   /**
-   * This function takes the user to the search mode, either from the
+   * @desc takes the user to the search mode, either from the
    * student view landing page, or from an individual entry.
    */
   function routeToSearch() {
@@ -93,10 +93,10 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function routes the user to the view for either all the entries in a specific theme,
-   * or for the first item in a test of those entries.
    * @param {object} theme - The theme selected by the user to be opened.
    * @param {boolean} takingTest - Whether the user clicked the "test" button, or the "theme" button.
+   * @desc routes the user to the view for either all the entries in a specific theme,
+   * or for the first item in a test of those entries.
    */
   function routeToTheme(theme, takingTest) {
     if (takingTest) {
@@ -108,10 +108,10 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function routes through items.js to retrieve all dictionary entries
-   * of a specific theme, and begins a test of those entries (if so directed.)
    * @param {object} theme - The theme selected by the user to be opened.
    * @param {boolean} takingTest - Whether the user clicked the "test" button, or the "theme" button.
+   * @desc routes through items.js to retrieve all dictionary entries
+   * of a specific theme, and begins a test of those entries (if so directed.)
    */
   function getThemedItems(theme, takingTest) {
     var themeID = theme.name;
@@ -125,9 +125,9 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function routes the user to the view that holds an individual dictionary entry,
-   * then specifies which entry to display.
    * @param {object} item - The item selected by the user to be opened.
+   * @desc routes the user to the view that holds an individual dictionary entry,
+   * then specifies which entry to display.
    */
   function openEntry(item) {
     $location.path("/entry");
@@ -135,7 +135,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function cancels any ongoing search-sessions or testing-session, then
+   * @desc cancels any ongoing search-sessions or testing-session, then
    * routes the user to the Student view.
    */
   function backToThemes() {
@@ -146,10 +146,10 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function creates a randomized array of test items, each with randomized
-   * distractors, then sends the displays the test item to the user.
    * @param {object} themedItems - An object holding an array of one theme's dictionary entries,
    * as retrieved by the getThemedItems() function.
+   * @desc creates a randomized array of test items, each with randomized
+   * distractors, then sends the displays the test item to the user.
    */
   function beginTest(themedItems) {
     themedItems.items.sort(randomizeArray);
@@ -179,17 +179,19 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function randomizes arrays of e.g. the test items and distractors
-   * used in the beginTest() function.
    * @param {object} a - The first element being "compared" in a given .sort() method
    * @param {object} b - The second element being "compared" in a given .sort() method
+   * @returns {number} - A float between .5 and -.5, whose sign determines
+   * whether parameter b is moved brefore parameter a.
+   * @desc randomizes arrays of e.g. the test items and distractors
+   * used in the beginTest() function.
    */
   function randomizeArray(a, b) {
     return 0.5 - Math.random();
   }
 
   /**
-   * This function selects a random, unique number to serve as the
+   * @desc selects a random, unique number to serve as the
    * next array index for the distractors chosen in the beginTest() function.
    */
   function createUniqueDistractor() {
@@ -206,9 +208,9 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function determines whether the user chose the correct test item,
-   * updates the overall test score, then routes them to the correct answer.
    * @param {string} qOption - The test answer selected by the user.
+   * @desc determines whether the user chose the correct test item,
+   * updates the overall test score, then routes them to the correct answer.
    */
   function getAnswer(qOption) {
     if (qOption === themedItems.items[(iterator - 1)].item_answer_en) {
@@ -221,7 +223,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   /**
-   * This function determines whether the test is complete, then either resets
+   * @desc determines whether the test is complete, then either resets
    * the test (if it is finished), or moves to the next test item (if it is not.)
    */
   function nextTestItem() {
