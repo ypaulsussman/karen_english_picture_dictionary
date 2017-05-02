@@ -77,7 +77,7 @@ tr>th>span{
   font-size: 4em;
 }
 
-.karen_theme, .english_theme, .testAnswers, .itemInfo, #landerMessageEN{
+.karen_theme, .english_theme, .testAnswers, .itemInfo, .testInfo, #landerMessageEN{
   text-align: center;
 }
 
