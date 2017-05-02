@@ -13,10 +13,9 @@ html, body{
   position:absolute;
 }
 
-#flagHolder {
-background-image: url('/media/Karen_National_Union_Flag.png');
-background-size: cover;
-padding: 12em;
+#loginHolder{
+  margin-top: 12em;
+  margin-bottom: 12em;
 }
 
 #logoutAdmin, #logoutStudent{
