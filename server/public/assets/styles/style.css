@@ -31,22 +31,22 @@ html, body{
   margin: 0px  !important;
 }
 
-#logoutStudent{
+/*#logoutStudent{
   height: 3em;
   width: 6em;
   font-size: 3em;
-}
+}*/
 
-.goToSearch{
+/*.goToSearch{
   height: 2em;
   width: 100%;
   font-size: 3em;
-}
+}*/
 
-.searchIcon{
+/*.searchIcon{
   height: 1.5em;
   width: 1.5em;
-}
+}*/
 
 #searchingIcon{
   height: 3.25em;
@@ -77,9 +77,7 @@ tr>th>span{
 }
 
 .karen_theme{
-  font-size: 12em;
-  padding-top: .25em;
-
+  font-size: 4em;
 }
 
 .karen_theme, .english_theme, .testAnswers{
@@ -100,9 +98,9 @@ tr>th>span{
 }
 
 /*spaces theme cards on student lander*/
-.theme_cardholder{
+/*.theme_cardholder{
   margin-bottom: 7em;
-}
+}*/
 
 .qOption_cardholder{
   margin-top: 7em;
@@ -121,8 +119,8 @@ tr>th>span{
 }
 
 .button_icon{
-  height: 8em !important;
-  width: 8em  !important;
+  height: 5em !important;
+  width: 5em  !important;
 }
 
 .answer_correct{

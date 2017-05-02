@@ -1,6 +1,6 @@
 <!-- @TODO: make this header into a separate template file, to serve both this and admin.html (?) -->
 
-<div layout="row" layout-align="space-around center">
+<div layout="row" layout-align="space-between center">
   <div layout="column" layout-align="end center">
     <md-button class="md-raised md-primary goToSearch" ng-click="routeToSearch()">Search
       <md-icon class="searchIcon" md-svg-src="/media/icons/ic_search_white_48px.svg"></md-icon>
@@ -12,20 +12,18 @@
 </div>
 
 <div layout="row" layout-wrap>
-  <div flex="80" flex-offset="10" ng-repeat="theme in themes" class="theme_cardholder">
+  <div flex="90" flex-offset="5" ng-repeat="theme in themes">
     <md-card md-whiteframe="8">
       <md-card-content layout="row" layout-align="center center" layout-wrap ng-click="routeToTheme(theme, false)">
-        <span class="md-display-4 karen karen_theme">{{theme.nameKN}}</span>
+        <span class="karen karen_theme">{{theme.nameKN}}</span>
       </md-card-content>
-      <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <div flex="80" layout="column" layout-align="center center" ng-click="routeToTheme(theme, false)">
-          <span class="md-display-4 english_theme">{{theme.name}}</span>
-        </div>
-        <div flex="20" layout="column" layout-wrap>
+      <md-card-content layout="row" layout-align="center start" layout-wrap ng-click="routeToTheme(theme, false)">
+          <span class="md-display-1 english_theme">{{theme.name}}</span>
+      </md-card-content>
+        <md-card-content layout="row" layout-align="center start" layout-wrap>
           <md-button class="launch_test" aria-label="Go to test" ng-click="routeToTheme(theme, true)">
             <md-icon class="button_icon" md-svg-src="/media/icons/ic_assignment_white_48px.svg"></md-icon>
           </md-button>
-        </div>
       </md-card-content>
     </md-card>
   </div>
