@@ -1,15 +1,16 @@
-<div layout="row" layout-align="space-between center">
+<div layout="row" layout-align="space-between center" md-whiteframe="8">
 
-  <div layout="column" flex-offset="5">
-    <div layout="row">
-      <md-icon id="searchingIcon" md-svg-src="/media/icons/ic_search_white_48px.svg"></md-icon>
-      <input placeholder="Find your word!" class="md-display-3" ng-model="searchTerm">
-    </div>
-  </div>
+
+  <!-- <md-input-container flex-offset="5" layout-align="center end"> -->
+    <!-- <label>Find your word!</label> -->
+    <!-- <md-icon id="searchingIcon" md-svg-src="/media/icons/ic_search_white_48px.svg"></md-icon> -->
+      <input placeholder="Find your word!" class="md-headline" ng-model="searchTerm">
+    <!-- <input ng-model="searchTerm"  md-whiteframe="8"> -->
+  <!-- </md-input-container> -->
 
   <div layout="column" layout-align="end start">
     <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
-      <md-icon class="button_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
+      <md-icon class="exit_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
     </md-button>
   </div>
 
@@ -20,7 +21,7 @@
     <md-card>
       <md-card-content layout="row" layout-align="center center" layout-wrap>
         <img src="/media/{{item.item_prompt}}" class="md-card-image prompt_img" alt="image caption">
-        <span class="md-display-4 karen ib">{{item.item_answer_kn}}</span>
+        <span class="karen karen_theme">{{item.item_answer_kn}}</span>
       </md-card-content>
     </md-card>
   </div>

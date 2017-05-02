@@ -46,8 +46,8 @@ html, body{
 }*/
 
 #searchingIcon{
-  height: 3.25em;
-  width:  3.25em;
+  height: 2em;
+  width:  2em;
   background-color: CornflowerBlue;
   border-radius: 10px;
 }
