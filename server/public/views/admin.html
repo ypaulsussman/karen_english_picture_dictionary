@@ -69,8 +69,7 @@
         <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
           <thead md-head md-order="query.order">
             <tr md-row>
-              <th md-column><span>Delete Item</span></th>
-              <th md-column><span>Edit Item</span></th>
+              <th md-column><span>Delete/Edit</span></th>
               <th md-column md-order-by="item_theme"><span>Theme</span></th>
               <th md-column md-numeric md-order-by="item_answer_en" md-desc><span>English Answer</span></th>
               <th md-column md-numeric md-order-by="item_answer_kn"><span>Karen Translation</span></th>
@@ -80,8 +79,14 @@
           </thead>
           <tbody md-body>
             <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="item in allItems.items | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-              <td md-cell><md-button ng-click="showConfirm(item)">Delete</md-button></td>
-              <td md-cell><md-button class="md-primary" ng-click="editItem(item)">Edit</md-button></td>
+              <td md-cell>
+                <md-button flex="45" class="md-raised admin-button" ng-click="showConfirm(item)">
+                  <md-icon layout-fill md-svg-src="/media/icons/ic_clear_black_48px.svg"></md-icon>
+                </md-button>
+                <md-button flex="45" class="md-raised md-primary admin-button" ng-click="editItem(item)">
+                  <md-icon layout-fill md-svg-src="/media/icons/ic_mode_edit_white_48px.svg"></md-icon>
+                </md-button>
+              </td>
               <td md-cell>{{item.item_theme}}</td>
               <td md-cell>{{item.item_answer_en}}</td>
               <td md-cell class="karen" id="testa">{{item.item_answer_kn}}</td>
