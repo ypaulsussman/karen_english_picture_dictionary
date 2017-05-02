@@ -78,7 +78,8 @@
             </tr>
           </thead>
           <tbody md-body>
-            <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="item in allItems.items | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+            <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect"
+              ng-repeat="item in allItems.items | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
               <td md-cell>
                 <md-button flex="45" class="md-raised admin-button" ng-click="showConfirm(item)">
                   <md-icon layout-fill md-svg-src="/media/icons/ic_clear_black_48px.svg"></md-icon>
@@ -87,11 +88,11 @@
                   <md-icon layout-fill md-svg-src="/media/icons/ic_mode_edit_white_48px.svg"></md-icon>
                 </md-button>
               </td>
-              <td md-cell>{{item.item_theme}}</td>
-              <td md-cell>{{item.item_answer_en}}</td>
-              <td md-cell class="karen" id="testa">{{item.item_answer_kn}}</td>
+              <td md-cell class="md-headline">{{item.item_theme}}</td>
+              <td md-cell class="md-headline">{{item.item_answer_en}}</td>
+              <td md-cell class="karen">{{item.item_answer_kn}}</td>
               <td md-cell class="karen">{{item.item_answer_phon_kn}}</td>
-              <td md-cell>{{item.item_prompt}}</td>
+              <td md-cell class="md-headline">{{item.item_prompt}}</td>
             </tr>
           </tbody>
         </table>

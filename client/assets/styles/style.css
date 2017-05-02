@@ -65,7 +65,15 @@ html, body{
 }
 
 td.karen, input.karen{
-  font-size: 22px !important;
+  font-size: 3em !important;
+}
+
+td.md-headline, input.karen{
+  font-size: 2em !important;
+}
+
+tr>th>span{
+  font-size: 1.5em !important;
 }
 
 .karen_theme{
