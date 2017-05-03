@@ -104,7 +104,7 @@ router.get('/themed/:id/:user', function(req, res) {
       res.sendStatus(500);
     } else if (themeID === 'list') {
       console.log("wow that worked");
-      db.query('SELECT * from "study_list" WHERE "user_id" = $1;',
+      db.query('SELECT * from "items" JOIN "study_list" ON "items".id = "study_list"."item_id" WHERE "user_id" = $1;',
       [userID],
       function(queryError, result) {
         done();
