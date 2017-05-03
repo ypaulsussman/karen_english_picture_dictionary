@@ -8,6 +8,7 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
   $scope.searching = ItemService.searching;
   $scope.routeToSearch = ItemService.routeToSearch;
 
+  $scope.addStudyItem = ItemService.addStudyItem; 
 
 //@TODO: abstract the WebSpeech call to a factory
   var text = $scope.entryItem.item.item_answer_en;

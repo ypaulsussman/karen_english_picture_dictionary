@@ -81,10 +81,10 @@
             <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect"
               ng-repeat="item in allItems.items | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
               <td md-cell>
-                <md-button flex="45" class="md-raised admin-button" ng-click="showConfirm(item)">
+                <md-button flex="45" aria-label="delete" class="md-raised admin-button" ng-click="showConfirm(item)">
                   <md-icon layout-fill md-svg-src="/media/icons/ic_clear_black_48px.svg"></md-icon>
                 </md-button>
-                <md-button flex="45" class="md-raised md-primary admin-button" ng-click="editItem(item)">
+                <md-button flex="45" aria-label="edit" class="md-raised md-primary admin-button" ng-click="editItem(item)">
                   <md-icon layout-fill md-svg-src="/media/icons/ic_mode_edit_white_48px.svg"></md-icon>
                 </md-button>
               </td>

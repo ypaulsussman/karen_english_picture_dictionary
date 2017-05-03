@@ -238,6 +238,20 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     }
   }
 
+  function addStudyItem(itemID, userID) {
+    console.log('foo', itemID, "bar", userID);
+    // var copy = angular.copy[itemID];
+    var studyItem = {
+      itemID: itemID,
+      userID: userID,
+    };
+    console.log("here's the object to pass: ", studyItem);
+    $http.post('/items/add_study', studyItem).then(function(response) {
+      console.log("success!  ", response);
+    });
+
+  }
+
   return {
     getAllItems: getAllItems,
     allItems: allItems,
@@ -256,6 +270,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     getAnswer: getAnswer,
     nextTestItem: nextTestItem,
     answerMeta: answerMeta,
+    addStudyItem: addStudyItem,
   }; //end return
 
 }]); //end ItemService

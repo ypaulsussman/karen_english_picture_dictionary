@@ -112,6 +112,26 @@ router.get('/themed/:id', function(req, res) {
   });
 });//end router.get
 
-
+router.post('/add_study', function(req, res) {
+  var userID = req.body.userID;
+  var itemID = req.body.itemID;
+  console.log("here's what we adding: ", userID, " and this ", itemID);
+  pool.connect(function(errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      res.sendStatus(500);
+    } else {
+      db.query('INSERT INTO "study_list" ("user_id", "item_id") VALUES ($1,$2);', //--> $1 b/c NOT zero-indexed; $1 refers to "author" in the line below
+      [userID, itemID],
+      function(queryError, result) {
+        done();
+        if (queryError) {
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+    }
+  });
+});//end router.post
 
 module.exports = router;

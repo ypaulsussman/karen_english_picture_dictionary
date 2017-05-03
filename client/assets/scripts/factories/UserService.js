@@ -1,37 +1,5 @@
 myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http, $location, $mdDialog) {
-  var user = {
-    username: '',
-    password: ''
-  };
-
-  function validateAdminRole() {
-    $http.get('/user').then(function(response) {
-      if (response.data.username && response.data.role === "student") {
-        $location.path("/student"); // user has a current session on the server and has a role of "student"? return to student page.
-      } else if (response.data.username && response.data.role === "admin") {
-        user.name = response.data.username; // user has a current session on the server and has a role of "admin"? they can stay.
-        $location.path("/admin");
-      } else {
-        $location.path("/home"); // user has no session? back to the login.
-      }
-    });
-  }
-
-  function validateStudentRole() {
-    $http.get('/user').then(function(response) {
-      if (response.data.username) { // user has a current session on the server, regardless of role? They can stay.
-        user.name = response.data.username;
-      } else {
-        $location.path("/home"); // user has no session? back to the login.
-      }
-    });
-  }
-
-  function logout() {
-    $http.get('/user/logout').then(function(response) {
-      go("/home");
-    });
-  }
+  var user = {};
 
   function go(path) {
     $location.path(path);
@@ -98,6 +66,39 @@ myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http,
          UserCreationErrorAlert();
        });
      }
+   }
+
+   function validateAdminRole() {
+     $http.get('/user').then(function(response) {
+       if (response.data.username && response.data.role === "student") {
+         $location.path("/student"); // user has a current session on the server and has a role of "student"? return to student page.
+       } else if (response.data.username && response.data.role === "admin") {
+         user.name = response.data.username; // user has a current session on the server and has a role of "admin"? they can stay.
+         user.id = response.data.id;
+         console.log("inside UserService adminVal, we've got: ", user.id);
+         $location.path("/admin");
+       } else {
+         $location.path("/home"); // user has no session? back to the login.
+       }
+     });
+   }
+
+   function validateStudentRole() {
+     $http.get('/user').then(function(response) {
+       if (response.data.username) { // user has a current session on the server, regardless of role? They can stay.
+         user.name = response.data.username;
+         user.id = response.data.id;
+         console.log("inside UserService studentVal, we've got: ", user.id);
+         } else {
+         $location.path("/home"); // user has no session? back to the login.
+       }
+     });
+   }
+
+   function logout() {
+     $http.get('/user/logout').then(function(response) {
+       go("/home");
+     });
    }
 
   return {
