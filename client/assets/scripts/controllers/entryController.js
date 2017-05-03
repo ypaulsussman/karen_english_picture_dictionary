@@ -8,7 +8,19 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
   $scope.searching = ItemService.searching;
   $scope.routeToSearch = ItemService.routeToSearch;
 
-  $scope.addStudyItem = ItemService.addStudyItem; 
+  $scope.addStudyItem = ItemService.addStudyItem;
+  $scope.studying = ItemService.studying;
+
+  $scope.exitEntry = function() {
+      if ($scope.searching.now) {
+        $scope.routeToSearch();
+      } else if ($scope.studying.now) {
+        $scope.routeToTheme({name: 'list'}, false, $scope.userName.id);
+      } else {
+        $scope.routeToTheme({name: $scope.entryItem.item.item_theme});
+      }
+  };
+
 
 //@TODO: abstract the WebSpeech call to a factory
   var text = $scope.entryItem.item.item_answer_en;

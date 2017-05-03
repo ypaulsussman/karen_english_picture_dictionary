@@ -14,6 +14,9 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   var searching = {
     now: false
   };
+  var studying = {
+    now: false
+  };
 
   /**
    * @desc routes through items.js to retrieve all dictionary entries;
@@ -115,6 +118,10 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
    * of a specific theme, and begins a test of those entries (if so directed.)
    */
   function getThemedItems(theme, takingTest, user) {
+    if (user) {
+      studying.now = true;
+      console.log("set study to true");
+    }
     console.log("here's your theme name at getThemedItems: ", theme.name);
     var themeID = theme.name;
     var userID = user;
@@ -144,6 +151,8 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
    * routes the user to the Student view.
    */
   function backToThemes() {
+    studying.now = false;
+    console.log("set study to false");
     searching.now = false;
     answerMeta.correctAnswerSum = 0;
     answerMeta.totalAnswers = 0;
@@ -258,10 +267,6 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
 
 
 
-
-
-
-
   return {
     getAllItems: getAllItems,
     allItems: allItems,
@@ -271,6 +276,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     themes: themes,
     routeToTheme: routeToTheme,
     searching: searching,
+    studying: studying,
     routeToSearch: routeToSearch,
     themedItems: themedItems,
     openEntry: openEntry,
