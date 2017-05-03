@@ -12,7 +12,7 @@
     <md-card-content layout="row" layout-align="center center" layout-wrap>
       <span class="karen karen_theme">{{testItem.current.item_answer_kn}}</span>
     </md-card-content>
-    <md-card-content layout="row" layout-align="center center" layout-wrap ng-repeat="qOption in testItem.current.qOptions">
+    <md-card-content layout="row" layout-align="center center" layout-wrap ng-repeat="qOption in testItem.current.qOptions track by $index">
       <div layout-align="center center">
         <span ng-click="getAnswer(qOption)" class="md-display-2 testAnswers">{{qOption}}</span>
       </div>
