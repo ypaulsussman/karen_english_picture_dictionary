@@ -8,17 +8,17 @@
           <h2 id="landerMessageEN" class="md-display-1">Create a new user!</h2>
         </md-card-title-text>
       </md-card-title>
-      <md-card-content flex="40" layout-wrap layout-align="center center">
+      <md-card-content layout-wrap layout-align="center center">
         <form ng-submit="registerUser()">
-          <md-input-container>
+          <md-input-container class="md-block">
             <label for="username">Username:</label>
             <input type="text" ng-model="user.username" />
           </md-input-container>
-          <md-input-container>
+          <md-input-container class="md-block">
             <label for="password">Password:</label>
             <input type="password" ng-model="user.password" />
           </md-input-container>
-          <md-input-container layout-align="space-between center">
+          <md-input-container layout-align="center center">
             <md-button class="md-raised" ng-click="go('/home')">Cancel</md-button>
             <md-button class="md-raised md-primary" type="submit">Submit</md-button>
           </md-input-container>
