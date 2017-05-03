@@ -153,4 +153,26 @@ router.post('/add_study', function(req, res) {
   });
 });//end router.post
 
+
+router.delete('/delete_study/:id', function(req, res) {
+  var itemID = req.params.id;
+  pool.connect(function(errorConnectingToDb, db, done) {
+    if (errorConnectingToDb) {
+      res.sendStatus(500);
+    } else {
+      db.query('DELETE FROM "study_list" WHERE "id" = $1;',
+      [itemID],
+      function(queryError, result) {
+        done();
+        if (queryError) {
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+    }
+  });
+});//end router.delete
+
+
 module.exports = router;

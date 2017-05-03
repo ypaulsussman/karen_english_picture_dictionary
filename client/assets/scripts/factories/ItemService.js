@@ -254,7 +254,6 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
 
   function addStudyItem(itemID, userID) {
     console.log('foo', itemID, "bar", userID);
-    // var copy = angular.copy[itemID];
     var studyItem = {
       itemID: itemID,
       userID: userID,
@@ -265,7 +264,14 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     });
   }
 
-
+function removeStudyItem(itemID, userID) {
+  console.log('foo', itemID, "bar", userID);
+  $http.delete('/items/delete_study/' + itemID).then(function() {
+    console.log("success!");
+    console.log("userID post delete: ", userID);
+    routeToTheme({name: 'list'}, false, userID);
+  });
+}
 
   return {
     getAllItems: getAllItems,
@@ -287,6 +293,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     nextTestItem: nextTestItem,
     answerMeta: answerMeta,
     addStudyItem: addStudyItem,
+    removeStudyItem: removeStudyItem,
   }; //end return
 
 }]); //end ItemService

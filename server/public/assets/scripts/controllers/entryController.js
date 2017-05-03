@@ -8,8 +8,9 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
   $scope.searching = ItemService.searching;
   $scope.routeToSearch = ItemService.routeToSearch;
 
-  $scope.addStudyItem = ItemService.addStudyItem;
   $scope.studying = ItemService.studying;
+  $scope.addStudyItem = ItemService.addStudyItem;
+  $scope.removeStudyItem = ItemService.removeStudyItem;
 
   $scope.exitEntry = function() {
       if ($scope.searching.now) {
@@ -20,6 +21,7 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
         $scope.routeToTheme({name: $scope.entryItem.item.item_theme});
       }
   };
+
 
 
 //@TODO: abstract the WebSpeech call to a factory
