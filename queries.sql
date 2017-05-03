@@ -15,6 +15,13 @@ CREATE TABLE "items" (
   "item_answer_phon_kn" varchar(200) not null
 );
 
+CREATE TABLE "study_list"(
+  id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES "users",
+  item_id INT REFERENCES "items",
+  CONSTRAINT only_one_per_list UNIQUE ("user_id", "item_id")
+);
+
 INSERT INTO "items" ("item_theme", "item_prompt", "item_answer_en", "item_answer_kn", "item_answer_phon_kn") VALUES ('At Home','1194983761256499536house_gabrielle_nowicki_.svg.med.png','house','[H. < A ''X; ','.,''p[\');
 INSERT INTO "items" ("item_theme", "item_prompt", "item_answer_en", "item_answer_kn", "item_answer_phon_kn") VALUES ('At Home','1194983836541063118bb_trsh_.svg.med.png','trash','vXtbsK; wtd.','zxcv');
 INSERT INTO "items" ("item_theme", "item_prompt", "item_answer_en", "item_answer_kn", "item_answer_phon_kn") VALUES ('At Home','1194984436700707086wooden_table_benji_park_01.svg.med.png','table','pD> eDR cd.','yuio');

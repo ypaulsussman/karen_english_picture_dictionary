@@ -31,7 +31,7 @@ router.post('/add', function(req, res) {
     if (errorConnectingToDb) {
       res.sendStatus(500);
     } else {
-      db.query('INSERT INTO "items" ("item_theme", "item_prompt", "item_answer_en", "item_answer_kn", "item_answer_phon_kn") VALUES ($1,$2,$3,$4,$5);', //--> $1 b/c NOT zero-indexed; $1 refers to "author" in the line below
+      db.query('INSERT INTO "items" ("item_theme", "item_prompt", "item_answer_en", "item_answer_kn", "item_answer_phon_kn") VALUES ($1,$2,$3,$4,$5);',
       [itemTheme, itemURL, itemEN, itemKN, itemPron],
       function(queryError, result) {
         done();
@@ -139,7 +139,7 @@ router.post('/add_study', function(req, res) {
     if (errorConnectingToDb) {
       res.sendStatus(500);
     } else {
-      db.query('INSERT INTO "study_list" ("user_id", "item_id") VALUES ($1,$2);', //--> $1 b/c NOT zero-indexed; $1 refers to "author" in the line below
+      db.query('INSERT INTO "study_list" ("user_id", "item_id") VALUES ($1,$2);',
       [userID, itemID],
       function(queryError, result) {
         done();
