@@ -265,10 +265,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
 function removeStudyItem(itemID, userID) {
-  console.log('foo', itemID, "bar", userID);
   $http.delete('/items/delete_study/' + itemID).then(function() {
-    console.log("success!");
-    console.log("userID post delete: ", userID);
     routeToTheme({name: 'list'}, false, userID);
   });
 }
