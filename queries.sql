@@ -3,7 +3,8 @@ CREATE TABLE "users" (
   "username" varchar(80) not null,
   "password" varchar(120) not null,
   "role" varchar(40) DEFAULT 'student',
-  "study_list" text[]
+  "study_list" text[],
+  CONSTRAINT only_one_per_list UNIQUE ("username")
 );
 
 CREATE TABLE "items" (

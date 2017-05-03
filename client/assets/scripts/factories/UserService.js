@@ -25,6 +25,10 @@ myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http,
         title = 'User successfully created!';
         textContent = 'Please log in to use the dictionary.';
         break;
+      case 'preexisting user':
+        title = 'Username already taken!';
+        textContent = 'Please register with a different username.';
+        break;
       default:
         title = 'Uh-Oh!';
         textContent = 'Something went wrong. Please try again!';
@@ -65,7 +69,7 @@ myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http,
        },
        function(response) {
          console.log('error: ', response);
-         UserCreationErrorAlert();
+         loginAlert('preexisting user');
        });
      }
    }
