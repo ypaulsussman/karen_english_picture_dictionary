@@ -10,11 +10,6 @@ html, body{
   position:absolute;
 }
 
-/*#loginHolder{
-  margin-top: 12em;
-  margin-bottom: 12em;
-}*/
-
 #logoutAdmin, #logoutStudent{
   color: red;
 }
@@ -53,7 +48,7 @@ tr>th>span{
   font-size: 4em;
 }
 
-.karen_theme, .english_theme, .testAnswers, .itemInfo, .testInfo, #landerMessageEN{
+.karen_theme, .english_theme, .testAnswers, .itemInfo, .testInfo, .landerMessageEN{
   text-align: center;
 }
 
