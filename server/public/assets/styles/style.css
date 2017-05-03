@@ -36,12 +36,12 @@ td.karen, input.karen{
   font-size: 3em !important;
 }
 
-td.md-headline, input.karen{
-  font-size: 2em !important;
+div md-card md-input-container md-option, div md-card md-input-container md-input, td.md-headline, input.karen{
+  font-size: 1.25em !important;
 }
 
-tr>th>span{
-  font-size: 1.5em !important;
+tr>th>span, md-card>md-table-pagination{
+  font-size: 1.75em !important;
 }
 
 .karen_theme{

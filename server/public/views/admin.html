@@ -2,16 +2,12 @@
   <div flex-offset="5">
     <h1 class="md-display-2">Welcome, {{userName.name}}!</h1>
   </div>
-  <div layout-align="center center">
     <md-button id="logoutAdmin" class="md-warn" ng-click="logout()">Log Out</md-button>
-  </div>
 </div>
 
-<div layout="column">
-  <div id="widthBasket">
-    <div md-whiteframe="8" class="cardApprox" flex="90" flex-offset="5">
-      <div layout="row" layout-align="center none">
-
+  <div layout="row" layout-align="center center">
+    <md-card md-whiteframe="8" flex="90" >
+      <div layout="row" layout-align="space-around none">
         <md-input-container>
           <label>Theme</label>
           <md-select ng-model="itemTheme">
@@ -45,36 +41,22 @@
         <md-input-container>
           <md-button class="md-primary md-raised" ng-click="sendItem()">Submit</button>
         </md-input-container>
-
       </div>
-    </div>
+    </md-card>
+  </div>
 
-
-
-    <md-card md-whiteframe="8" flex="90" flex-offset="5">
-
-      <md-toolbar class="md-table-toolbar md-default" ng-hide="options.rowSelection && selected.length">
-        <div class="md-toolbar-tools">
-          <span>Dictionary Items</span>
-        </div>
-      </md-toolbar>
-
-      <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
-        <div class="md-toolbar-tools">
-          <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
-        </div>
-      </md-toolbar>
-
+  <div layout="row" layout-align="center center">
+    <md-card md-whiteframe="8" flex="90">
       <md-table-container>
         <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
           <thead md-head md-order="query.order">
             <tr md-row>
-              <th md-column><span>Delete/Edit</span></th>
-              <th md-column md-order-by="item_theme"><span>Theme</span></th>
-              <th md-column md-numeric md-order-by="item_answer_en" md-desc><span>English Answer</span></th>
-              <th md-column md-numeric md-order-by="item_answer_kn"><span>Karen Translation</span></th>
-              <th md-column md-numeric md-order-by="item_answer_phon_kn"><span>Karen Transcription</span></th>
-              <th md-column md-order-by="item_prompt"><span>Image URL</span></th>
+              <th md-column class="md-headline"><span>Delete/Edit</span></th>
+              <th md-column md-order-by="item_theme" class="md-headline"><span>Theme</span></th>
+              <th md-column md-numeric md-order-by="item_answer_en" md-desc class="md-headline"><span>English Answer</span></th>
+              <th md-column md-numeric md-order-by="item_answer_kn" class="md-headline"><span>Karen Translation</span></th>
+              <th md-column md-numeric md-order-by="item_answer_phon_kn" class="md-headline"><span>Karen Transcription</span></th>
+              <th md-column md-order-by="item_prompt" class="md-headline"><span>Image URL</span></th>
             </tr>
           </thead>
           <tbody md-body>
@@ -97,8 +79,8 @@
           </tbody>
         </table>
       </md-table-container>
-      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{allItems.items.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{allItems.items.length}}"
+      md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
     </md-card>
-
   </div>
-</div>
+<!-- </div> -->
