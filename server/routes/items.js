@@ -90,12 +90,31 @@ router.delete('/delete/:id', function(req, res) {
   });
 });//end router.delete
 
-router.get('/themed/:id', function(req, res) {
+router.get('/themed/:id/:user', function(req, res) {
   var themeID = req.params.id;
+  var userID = parseInt(req.params.user, 10);
+  console.log('here is everything: ', req.params);
+  console.log("here's your themeID on the server: ", themeID);
+  console.log("here's what it's made of: ", typeof themeID);
+  console.log("here's your userID on the server: ", userID);
+  console.log("here's what it's made of: ", typeof userID);
   pool.connect(function(errorConnectingToDb, db, done) {
     if (errorConnectingToDb) {
       console.log('error connecting: ', errorConnectingToDb);
       res.sendStatus(500);
+    } else if (themeID === 'list') {
+      console.log("wow that worked");
+      db.query('SELECT * from "study_list" WHERE "user_id" = $1;',
+      [userID],
+      function(queryError, result) {
+        done();
+        if (queryError) {
+          console.log('error querying: ', queryError);
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+      });
     } else {
       db.query('SELECT * from "items" WHERE "item_theme" = $1;',
       [themeID],

@@ -98,13 +98,14 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
    * @desc routes the user to the view for either all the entries in a specific theme,
    * or for the first item in a test of those entries.
    */
-  function routeToTheme(theme, takingTest) {
+  function routeToTheme(theme, takingTest, user) {
+    console.log("here's your theme at routeToTheme: ", theme);
     if (takingTest) {
       $location.path("/question");
     } else {
       $location.path("/theme");
     }
-    getThemedItems(theme, takingTest);
+    getThemedItems(theme, takingTest, user);
   }
 
   /**
@@ -113,9 +114,13 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
    * @desc routes through items.js to retrieve all dictionary entries
    * of a specific theme, and begins a test of those entries (if so directed.)
    */
-  function getThemedItems(theme, takingTest) {
+  function getThemedItems(theme, takingTest, user) {
+    console.log("here's your theme name at getThemedItems: ", theme.name);
     var themeID = theme.name;
-    $http.get('/items/themed/' + themeID).then(function(response) {
+    var userID = user;
+    console.log("here's the ID we get at ItemService: ", user);
+    $http.get('/items/themed/' + themeID + '/' + userID).then(function(response) {
+      console.log("here's what you get back from db: ", response.data);
       themedItems.items = response.data;
     }).then(function() {
       if (takingTest) {
@@ -249,8 +254,13 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
     $http.post('/items/add_study', studyItem).then(function(response) {
       console.log("success!  ", response);
     });
-
   }
+
+
+
+
+
+
 
   return {
     getAllItems: getAllItems,

@@ -1,5 +1,7 @@
 myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http, $location, $mdDialog) {
-  var user = {};
+  var user = {
+    id: null,
+  };
 
   function go(path) {
     $location.path(path);
