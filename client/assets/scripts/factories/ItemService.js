@@ -1,4 +1,4 @@
-myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
+myApp.factory('ItemService', ['$http', '$location', '$mdDialog',function($http, $location, $mdDialog) {
   var allItems = {};
   var themedItems = {};
   var entryItem = {};
@@ -17,7 +17,7 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   var studying = {
     now: false
   };
-
+  var minTestItems = 5;
   /**
    * @desc routes through items.js to retrieve all dictionary entries;
    * it's used for the Admin view, and in the search mode of Student view.
@@ -102,7 +102,6 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
    * or for the first item in a test of those entries.
    */
   function routeToTheme(theme, takingTest, user) {
-    console.log("here's your theme at routeToTheme: ", theme);
     if (takingTest) {
       $location.path("/question");
     } else {
@@ -120,21 +119,31 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   function getThemedItems(theme, takingTest, user) {
     if (user) {
       studying.now = true;
-      console.log("set study to true");
     }
-    console.log("here's your theme name at getThemedItems: ", theme.name);
     var themeID = theme.name;
     var userID = user;
-    console.log("here's the ID we get at ItemService: ", user);
     $http.get('/items/themed/' + themeID + '/' + userID).then(function(response) {
-      console.log("here's what you get back from db: ", response.data);
       themedItems.items = response.data;
     }).then(function() {
-      if (takingTest) {
+      if (takingTest && minTestItems > themedItems.items.length) {
+        notEnoughItemsAlert();
+        $location.path("/student");
+      } else if (takingTest) {
         beginTest(themedItems);
       }
     });
   }
+
+  function notEnoughItemsAlert() {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .clickOutsideToClose(true)
+          .title('Not enough test items!')
+          .textContent('You need at least ' + minTestItems + ' items in your study list.')
+          .ariaLabel('Alert Dialog')
+          .ok('OK!')
+      );
+    }
 
   /**
    * @param {object} item - The item selected by the user to be opened.
@@ -152,7 +161,6 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
    */
   function backToThemes() {
     studying.now = false;
-    console.log("set study to false");
     searching.now = false;
     answerMeta.correctAnswerSum = 0;
     answerMeta.totalAnswers = 0;
@@ -253,14 +261,11 @@ myApp.factory('ItemService', ['$http', '$location', function($http, $location) {
   }
 
   function addStudyItem(itemID, userID) {
-    console.log('foo', itemID, "bar", userID);
     var studyItem = {
       itemID: itemID,
       userID: userID,
     };
-    console.log("here's the object to pass: ", studyItem);
     $http.post('/items/add_study', studyItem).then(function(response) {
-      console.log("success!  ", response);
     });
   }
 
