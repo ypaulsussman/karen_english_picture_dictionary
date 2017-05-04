@@ -6,6 +6,7 @@ myApp.controller('AnswerController', ['$scope', '$http', '$location', 'ItemServi
   $scope.nextTestItem = ItemService.nextTestItem;
   $scope.answerMeta = ItemService.answerMeta;
 
+  $scope.studying = ItemService.studying;
   $scope.addStudyItem = ItemService.addStudyItem;
   $scope.backToThemes = ItemService.backToThemes;
 
