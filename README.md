@@ -1,21 +1,17 @@
-# SQL Strategy Branch
-Branched from `angular-ctrl-with-routes`. The main difference is it now uses `/strategies/user_sql.js`. See `/modules/connection.js` to set your PostGRES DB connection string. You will find a basic `CREATE TABLE` query commented out in the strategy file.
+# Karen-English Picture Dictionary
+This mobile-first web application allows Karen-speaking English learners to search or browse by theme, explore both an entry’s definition and pronunciation (approximated into the Karen script), and listen to a native speaker pronounce the word aloud.
 
-You'll need the `pg` module as well (just run `npm install`)
+It also includes a flashcard service for students to practice both whole-word recognition and phonic decoding, and a study list for students to save words they'd like to review later.
 
-`/models/user.js` is no longer needed at all.
+A desktop view allows admin to add, edit, and remove dictionary entries.
 
-## Branch Breakdown
-* `master:` Original lecture code with jQuery, alt static file serving, Grunt, Mongoose/Mongo
-* `angular-complete:` Angular and MongoDB version as shown to Iota cohort.
-* `sql_strategy:` Replaces MongoDB with PostGRES for storage of user data. Maintains bcrypt functionality.
-* `angular-controlled-login-intro` : Introduces Angular as the login handler. All server communication is handled in an Angular Controller and updates the route/page based on success or failure. Intended for an alternate intro lecture to Passport (as seen in angular-complete and sql_strategy).
+![](screenshots/01_screenshot_lander.png) ![](screenshots/02_screenshot_entry.png) ![](screenshots/03_screenshot_testq.png) ![](screenshots/04_screenshot_testanswer.png)
 
-# Express/Passport Lecture Starting File
-Download and run 'npm install' before the lecture as prep. In this lecture, we will build out a user registration page and allow our users to log into our application. Once they are logged in, we will see information returned to us, specific to the user.
+## Getting Started
+Fork, clone, or download the project, then run `npm install`.
 
+## Built With
 
-### Y's Notes
-
-Must create db before using this package: use postico to create a table
-(_then: update DBname in user_sql.js config object, and update DB in connectionstring in connection.js_)
+* HTML 5, CSS 3, and AngularJS Material;
+* AngularJS, AngularJS Routes, and SpeechSynthesis (Web Speech API);
+* Node.js, Express.js, Passport, PG, PostgreSQL, and S3 (AWS).
