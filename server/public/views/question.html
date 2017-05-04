@@ -1,6 +1,6 @@
 <div layout="row" layout-align="end start">
   <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
-    <md-icon class="exit_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
+    <md-icon class="fab_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
   </md-button>
 </div>
 
@@ -10,7 +10,7 @@
       <img ng-src="https://s3-us-west-2.amazonaws.com/kepd-images/{{testItem.current.item_prompt}}" class="md-card-image" alt="image caption">
     </md-card-content>
     <md-card-content layout="row" layout-align="center center" layout-wrap>
-      <span class="karen karen_theme">{{testItem.current.item_answer_kn}}</span>
+      <span class="karen karen_large">{{testItem.current.item_answer_kn}}</span>
     </md-card-content>
     <md-card-content layout="row" layout-align="center center" layout-wrap ng-repeat="qOption in testItem.current.qOptions track by $index">
       <div layout-align="center center">

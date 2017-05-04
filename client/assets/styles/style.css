@@ -1,41 +1,27 @@
+/*Adds Karen font*/
 @font-face {
   font-family: 'KNU';
   src: url('knu.ttf');
 }
 
-html, body{
-  height: 100%;
-  width: 100%;
-  position:absolute;
-}
-
-#logoutAdmin, #logoutStudent{
-  color: red;
-}
-
-.admin-button{
-  height: 2.5em !important;
-  width: 3em !important;
-  min-height: 10px !important;
-  min-width: 10px !important;
-  padding: 0px  !important;
-  margin: 0px  !important;
-}
-
-.testAnswers {
-  color: CornflowerBlue;
-}
-
-
 .karen{
   font-family: 'KNU', fantasy;
 }
 
+.karen_large{
+  font-size: 4em;
+}
+
+.karen_large, .english_theme, .testAnswers, .itemInfo, .testInfo, .landerMessageEN{
+  text-align: center;
+}
+
+/*Styles admin-view table and form*/
 td.karen, input.karen{
   font-size: 3em !important;
 }
 
-div md-card md-input-container md-option, div md-card md-input-container md-input, td.md-headline, input.karen{
+div>md-card>div>md-input-container md-input, td.md-headline, input.karen{
   font-size: 1.25em !important;
 }
 
@@ -43,37 +29,40 @@ tr>th>span, md-card>md-table-pagination{
   font-size: 1.75em !important;
 }
 
-.karen_theme{
-  font-size: 4em;
+.admin-button{
+  height: 3em;
+  width: 3em;
+  min-width: 10px;
+  margin: 0px ;
 }
 
-.karen_theme, .english_theme, .testAnswers, .itemInfo, .testInfo, .landerMessageEN{
-  text-align: center;
+/*Logout button text color*/
+#logoutAdmin, #logoutStudent{
+  color: Crimson;
 }
 
-/*md-card had several built-in layout issues; it was faster/cleaner to use this for the admin submit form*/
-.cardApprox{
-  height: 100px;
-  width: 100%;
-  background-color: white;
-  margin-bottom: 20px;
-}
-
-.launch_test{
+/*styles student-view launcher buttons*/
+.launch_test, .open_theme{
   padding-top: 1em;
   padding-bottom: 1em;
   border-radius: 10px;
   background-color: CornflowerBlue;
 }
 
-.button_icon{
+.launcher_button_icon{
   height: 5em !important;
   width: 5em  !important;
 }
 
-.exit_icon{
+/*styles referencee icons inside fixed-action buttons*/
+.fab_icon{
   height: 3em !important;
   width: 3em  !important;
+}
+
+/*styles question/answer views*/
+.testAnswers {
+  color: CornflowerBlue;
 }
 
 .answer_correct{

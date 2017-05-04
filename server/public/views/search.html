@@ -2,7 +2,7 @@
   <input placeholder="Write your word here!" class="md-headline" ng-model="searchTerm">
   <div layout="column" layout-align="end start">
     <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
-      <md-icon class="exit_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
+      <md-icon class="fab_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
     </md-button>
   </div>
 
@@ -13,10 +13,10 @@
         ng-repeat="item in allItems.items | orderBy:'-item_answer_en':true ">
     <md-card>
       <md-card-content layout="row" layout-align="center center">
-        <img flex="75" src="https://s3-us-west-2.amazonaws.com/kepd-images/{{item.item_prompt}}" class="md-card-image prompt_img" alt="image caption" layout-wrap>
+        <img flex="75" ng-src="https://s3-us-west-2.amazonaws.com/kepd-images/{{item.item_prompt}}" class="md-card-image prompt_img" alt="image caption" layout-wrap>
       </md-card-content>
       <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="karen karen_theme" layout-wrap>{{item.item_answer_kn}}</span>
+        <span class="karen karen_large" layout-wrap>{{item.item_answer_kn}}</span>
       </md-card-content>
     </md-card>
   </div>

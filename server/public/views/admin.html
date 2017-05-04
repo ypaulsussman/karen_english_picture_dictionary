@@ -1,13 +1,13 @@
-<div layout="row" layout-align="space-between start">
-  <div flex-offset="5">
+<div layout="row" layout-align="space-between start" class="admin_table">
+  <div class="column" flex-offset="5">
     <h1 class="md-display-2">Welcome, {{userName.name}}!</h1>
   </div>
-    <md-button id="logoutAdmin" class="md-warn" ng-click="logout()">Log Out</md-button>
+    <md-button id="logoutAdmin" ng-click="logout()">Log Out</md-button>
 </div>
 
-  <div layout="row" layout-align="center center">
+  <div layout="row" layout-align="center center" class="admin_table">
     <md-card md-whiteframe="8" flex="90" >
-      <div layout="row" layout-align="space-around none">
+      <div layout="row" layout-align="space-around none" class="admin_table">
         <md-input-container>
           <label>Theme</label>
           <md-select ng-model="itemTheme">
@@ -45,7 +45,7 @@
     </md-card>
   </div>
 
-  <div layout="row" layout-align="center center">
+  <div layout="row" layout-align="center center" class="admin_table">
     <md-card md-whiteframe="8" flex="90">
       <md-table-container>
         <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
@@ -83,4 +83,3 @@
       md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
     </md-card>
   </div>
-<!-- </div> -->
