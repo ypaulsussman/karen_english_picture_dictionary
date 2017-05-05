@@ -43,11 +43,14 @@
   <main ng-view>
     <script type="text/javascript">
     // hides address bar on mobile
+    function minorScroll() {
       window.addEventListener("load", function() {
         setTimeout(function() {
           window.scrollTo(0, 1);
         }, 0);
       });
+    }
+    minorScroll();
     </script>
   </main>
 
