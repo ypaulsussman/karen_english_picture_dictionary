@@ -1,59 +1,45 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Welcome to the KEPD!</title>
 
-<head>
-  <title>Welcome to the KEPD!</title>
+        <!-- Enables mobile responsivity -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Enables mobile responsivity -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Hides address bar for mobile users who have saved app to home screen -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
 
-  <!-- Hides address bar for mobile users who have saved app to home screen -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
+        <!-- Stylesheets -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="/vendors/angular-material/angular-material.min.css">
+        <link rel="stylesheet" href="/vendors/angular-material-data-table/md-data-table.min.css">
+        <link rel="stylesheet" href="/assets/styles/style.css">
 
-  <!-- Stylesheets -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" href="/vendors/angular-material/angular-material.min.css">
-  <link rel="stylesheet" href="/vendors/angular-material-data-table/md-data-table.min.css">
-  <link rel="stylesheet" href="/assets/styles/style.css">
+        <!-- Angular requires -->
+        <script type="text/javascript" src="/vendors/angular/angular.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-animate/angular-animate.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-aria/angular-aria.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-messages/angular-messages.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-material/angular-material.min.js"></script>
+        <script type="text/javascript" src="/vendors/angular-material-data-table/md-data-table.min.js"></script>
 
-  <!-- Angular requires -->
-  <script type="text/javascript" src="/vendors/angular/angular.min.js"></script>
-  <script type="text/javascript" src="/vendors/angular-route/angular-route.min.js"></script>
-  <script type="text/javascript" src="/vendors/angular-animate/angular-animate.min.js"></script>
-  <script type="text/javascript" src="/vendors/angular-aria/angular-aria.min.js"></script>
-  <script type="text/javascript" src="/vendors/angular-messages/angular-messages.min.js"></script>
-  <script type="text/javascript" src="/vendors/angular-material/angular-material.min.js"></script>
-  <script type="text/javascript" src="/vendors/angular-material-data-table/md-data-table.min.js"></script>
+        <!-- Other requires -->
+        <script type="text/javascript" src="/assets/scripts/clientapp.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/loginController.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/studentController.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/adminController.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/entryController.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/themeController.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/questionController.js"></script>
+        <script type="text/javascript" src="/assets/scripts/controllers/answerController.js"></script>
+        <script type="text/javascript" src="/assets/scripts/factories/ItemService.js"></script>
+        <script type="text/javascript" src="/assets/scripts/factories/UserService.js"></script>
+    </head>
 
-  <!-- Other requires -->
-  <script type="text/javascript" src="/assets/scripts/clientapp.js"></script>
-  <script type="text/javascript" src="/assets/scripts/controllers/loginController.js"></script>
-  <script type="text/javascript" src="/assets/scripts/controllers/studentController.js"></script>
-  <script type="text/javascript" src="/assets/scripts/controllers/adminController.js"></script>
-  <script type="text/javascript" src="/assets/scripts/controllers/entryController.js"></script>
-  <script type="text/javascript" src="/assets/scripts/controllers/themeController.js"></script>
-  <script type="text/javascript" src="/assets/scripts/controllers/questionController.js"></script>
-  <script type="text/javascript" src="/assets/scripts/controllers/answerController.js"></script>
-  <script type="text/javascript" src="/assets/scripts/factories/ItemService.js"></script>
-  <script type="text/javascript" src="/assets/scripts/factories/UserService.js"></script>
-</head>
+    <body ng-app="myApp">
 
-<body ng-app="myApp">
+      <main ng-view></main>
 
-  <main ng-view>
-    <script type="text/javascript">
-    // hides address bar on mobile
-    function minorScroll() {
-      window.addEventListener("load", function() {
-        setTimeout(function() {
-          window.scrollTo(0, 1);
-        }, 0);
-      });
-    }
-    minorScroll();
-    </script>
-  </main>
-
-</body>
-
+    </body>
 </html>
