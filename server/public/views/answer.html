@@ -29,7 +29,7 @@
 
   <div layout="row" layout-align="space-between center">
 
-      <md-button ng-click="readEntry()" class="md-fab" aria-label="Read Word">
+      <md-button ng-show="testWebSpeech()" ng-click="readEntry()" class="md-fab" aria-label="Read Word">
         <md-icon class="fab_icon" md-svg-src="/media/icons/ic_hearing_white_48px.svg"></md-icon>
       </md-button>
 

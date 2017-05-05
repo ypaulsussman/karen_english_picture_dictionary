@@ -275,6 +275,16 @@ function removeStudyItem(itemID, userID) {
   });
 }
 
+function testWebSpeech() {
+  if (('webkitSpeechRecognition' in window)) {
+    console.log('positive!');
+    return true;
+  } else {
+    console.log('negative!');
+    return false;
+  }
+}
+
   return {
     getAllItems: getAllItems,
     allItems: allItems,
@@ -296,6 +306,7 @@ function removeStudyItem(itemID, userID) {
     answerMeta: answerMeta,
     addStudyItem: addStudyItem,
     removeStudyItem: removeStudyItem,
+    testWebSpeech: testWebSpeech,
   }; //end return
 
 }]); //end ItemService
