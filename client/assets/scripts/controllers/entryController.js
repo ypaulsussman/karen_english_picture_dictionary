@@ -29,14 +29,15 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
   var text = $scope.entryItem.item.item_answer_en;
   var synth = window.speechSynthesis;
   var speechRate = 0.6;
+  var voices = synth.getVoices();
 
-  if (speechSynthesis.onvoiceschanged !== undefined) {
-    speechSynthesis.onvoiceschanged = populateVoiceList;
-  }
-
-  function populateVoiceList() {
-    voices = synth.getVoices();
-  }
+  // if (speechSynthesis.onvoiceschanged !== undefined) {
+  //   speechSynthesis.onvoiceschanged = populateVoiceList;
+  // }
+  //
+  // function populateVoiceList() {
+  //   voices = synth.getVoices();
+  // }
 
   $scope.readEntry = function() {
     var utterThis = new SpeechSynthesisUtterance(text);

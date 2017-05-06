@@ -5,10 +5,16 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog'
 
   ItemService.getAllItems();
   $scope.allItems = ItemService.allItems;
+  $scope.themes = ItemService.themes;
+  $scope.deleteItem = ItemService.deleteItem;
   var editing = false;
 
-
-  $scope.themes = ItemService.themes;
+  //limits number of items appearing inside grid
+  $scope.query = {
+    order: 'name',
+    limit: 25,
+    page: 1
+  };
 
   //sets input fields for create/edit form
   $scope.clearFields = function functionName() {
@@ -23,8 +29,7 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog'
   var item = {};
   $scope.sendItem = function() {
     if (!$scope.itemTheme || !$scope.itemEN || !$scope.itemKN || !$scope.itemPron || !$scope.itemURL) {
-      console.log("please complete all items!");
-      $scope.showAlert();
+      $scope.completeFields();
     } else {
       item.itemTheme = $scope.itemTheme;
       item.itemURL = $scope.itemURL;
@@ -54,7 +59,7 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog'
   };
 
   //popup if new/edited item has empty fields
-  $scope.showAlert = function() {
+  $scope.completeFields = function() {
       $mdDialog.show(
         $mdDialog.alert()
           .clickOutsideToClose(true)
@@ -65,11 +70,8 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog'
       );
     };
 
-
-  //sends an item to be deleted
-  $scope.deleteItem = ItemService.deleteItem;
-
-  $scope.showConfirm = function(item) {
+//popup when 'delete' button is clicked
+  $scope.confirmDelete = function(item) {
     var confirm = $mdDialog.confirm()
       .title('Are you sure you want to delete this item?')
       .textContent('This will remove the item forever.')
@@ -79,13 +81,5 @@ myApp.controller('AdminController', ['$scope', '$http', '$location', '$mdDialog'
       $scope.deleteItem(item);
     });
   };
-
-  //limits number of items appearing inside grid
-  $scope.query = {
-    order: 'name',
-    limit: 25,
-    page: 1
-  };
-
 
 }]); //end controller
