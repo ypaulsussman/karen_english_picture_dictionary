@@ -277,13 +277,23 @@ function removeStudyItem(itemID, userID) {
 
 function testWebSpeech() {
   if (('webkitSpeechRecognition' in window)) {
-    console.log('positive!');
     return true;
   } else {
-    console.log('negative!');
     return false;
   }
 }
+
+function readEntry(text) {
+  console.log("here it is!", text);
+  var synth = window.speechSynthesis;
+  var speechRate = 0.6;
+  var voices = synth.getVoices();
+  var utterThis = new SpeechSynthesisUtterance(text);
+  utterThis.voice = voices[45];
+  utterThis.rate = speechRate;
+  synth.speak(utterThis);
+}
+
 
   return {
     getAllItems: getAllItems,
@@ -307,6 +317,7 @@ function testWebSpeech() {
     addStudyItem: addStudyItem,
     removeStudyItem: removeStudyItem,
     testWebSpeech: testWebSpeech,
+    readEntry: readEntry,
   }; //end return
 
 }]); //end ItemService

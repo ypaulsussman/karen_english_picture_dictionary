@@ -13,6 +13,8 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
   $scope.addStudyItem = ItemService.addStudyItem;
   $scope.removeStudyItem = ItemService.removeStudyItem;
 
+  $scope.readEntry = ItemService.readEntry;
+
   $scope.exitEntry = function() {
       if ($scope.searching.now) {
         $scope.routeToSearch();
@@ -21,29 +23,6 @@ myApp.controller('EntryController', ['$scope', '$http', '$location', 'ItemServic
       } else {
         $scope.routeToTheme({name: $scope.entryItem.item.item_theme});
       }
-  };
-
-
-
-//@TODO: abstract the WebSpeech call to a factory
-  var text = $scope.entryItem.item.item_answer_en;
-  var synth = window.speechSynthesis;
-  var speechRate = 0.6;
-  var voices = synth.getVoices();
-
-  // if (speechSynthesis.onvoiceschanged !== undefined) {
-  //   speechSynthesis.onvoiceschanged = populateVoiceList;
-  // }
-  //
-  // function populateVoiceList() {
-  //   voices = synth.getVoices();
-  // }
-
-  $scope.readEntry = function() {
-    var utterThis = new SpeechSynthesisUtterance(text);
-    utterThis.voice = voices[45];
-    utterThis.rate = speechRate;
-    synth.speak(utterThis);
   };
 
 }]);
