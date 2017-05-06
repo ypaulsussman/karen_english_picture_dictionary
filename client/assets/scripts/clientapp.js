@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'md.data.table']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'md.data.table', 'ngAria']);
 /// Routes ///
 
 myApp.config(['$routeProvider', function($routeProvider) {

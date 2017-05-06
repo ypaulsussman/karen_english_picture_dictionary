@@ -4,5 +4,4 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', '$mdDialog'
   $scope.user = UserService.user;
   $scope.login = UserService.login;
   $scope.registerUser = UserService.registerUser;
-
 }]);

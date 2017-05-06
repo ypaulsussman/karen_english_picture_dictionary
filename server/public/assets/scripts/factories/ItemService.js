@@ -1,4 +1,4 @@
-myApp.factory('ItemService', ['$http', '$location', '$mdDialog',function($http, $location, $mdDialog) {
+myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http, $location, $mdDialog) {
   var allItems = {};
   var themedItems = {};
   var entryItem = {};
@@ -135,15 +135,15 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog',function($http, 
   }
 
   function notEnoughItemsAlert() {
-      $mdDialog.show(
-        $mdDialog.alert()
-          .clickOutsideToClose(true)
-          .title('Not enough test items!')
-          .textContent('You need at least ' + minTestItems + ' items in your study list.')
-          .ariaLabel('Alert Dialog')
-          .ok('OK!')
-      );
-    }
+    $mdDialog.show(
+      $mdDialog.alert()
+      .clickOutsideToClose(true)
+      .title('Not enough test items!')
+      .textContent('You need at least ' + minTestItems + ' items in your study list.')
+      .ariaLabel('Alert Dialog')
+      .ok('OK!')
+    );
+  }
 
   /**
    * @param {object} item - The item selected by the user to be opened.
@@ -266,33 +266,58 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog',function($http, 
       userID: userID,
     };
     $http.post('/items/add_study', studyItem).then(function(response) {
+      addStudyItemResult('success');
+    }, function(reason) {
+      addStudyItemResult('failure');
     });
   }
 
-function removeStudyItem(itemID, userID) {
-  $http.delete('/items/delete_study/' + itemID).then(function() {
-    routeToTheme({name: 'list'}, false, userID);
-  });
-}
-
-function testWebSpeech() {
-  if (('webkitSpeechRecognition' in window)) {
-    return true;
-  } else {
-    return false;
+  function addStudyItemResult(outcome) {
+    var title = '';
+    switch (outcome) {
+      case 'success':
+        title = 'Item added!';
+        break;
+      case 'failure':
+        title = 'Item already saved.';
+        break;
+      default:
+    }
+    $mdDialog.show(
+      $mdDialog.alert()
+      .clickOutsideToClose(true)
+      .title(title)
+      .ariaLabel(title)
+      .ok('OK!')
+    );
   }
-}
 
-function readEntry(text) {
-  console.log("here it is!", text);
-  var synth = window.speechSynthesis;
-  var speechRate = 0.6;
-  var voices = synth.getVoices();
-  var utterThis = new SpeechSynthesisUtterance(text);
-  utterThis.voice = voices[45];
-  utterThis.rate = speechRate;
-  synth.speak(utterThis);
-}
+  function removeStudyItem(itemID, userID) {
+    $http.delete('/items/delete_study/' + itemID).then(function() {
+      routeToTheme({
+        name: 'list'
+      }, false, userID);
+    });
+  }
+
+  function testWebSpeech() {
+    if (('webkitSpeechRecognition' in window)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function readEntry(text) {
+    console.log("here it is!", text);
+    var synth = window.speechSynthesis;
+    var speechRate = 0.6;
+    var voices = synth.getVoices();
+    var utterThis = new SpeechSynthesisUtterance(text);
+    utterThis.voice = voices[45];
+    utterThis.rate = speechRate;
+    synth.speak(utterThis);
+  }
 
 
   return {

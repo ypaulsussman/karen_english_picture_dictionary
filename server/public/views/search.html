@@ -14,7 +14,7 @@
         ng-repeat="item in allItems.items | orderBy:'-item_answer_en':true ">
     <md-card layout-wrap md-whiteframe="8">
       <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <img ng-src="https://s3-us-west-2.amazonaws.com/kepd-images/{{item.item_prompt}}" class="md-card-image prompt_img" alt="image caption" layout-wrap>
+        <img ng-src="https://s3-us-west-2.amazonaws.com/kepd-images/{{item.item_prompt}}" alt="{{item.item_answer_en}}" layout-wrap>
         <span class="karen karen_large" layout-wrap>{{item.item_answer_kn}}</span>
       </md-card-content>
     </md-card>

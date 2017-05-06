@@ -33,76 +33,76 @@ myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http,
         title = 'Uh-Oh!';
         textContent = 'Something went wrong. Please try again!';
     }
-     $mdDialog.show(
-       $mdDialog.alert()
-         .clickOutsideToClose(true)
-         .title(title)
-         .textContent(textContent)
-         .ariaLabel('Alert Dialog')
-         .ok('OK!')
-     );
-   }
+    $mdDialog.show(
+      $mdDialog.alert()
+      .clickOutsideToClose(true)
+      .title(title)
+      .textContent(textContent)
+      .ariaLabel('Alert Dialog')
+      .ok('OK!')
+    );
+  }
 
-   function login() {
-     if(user.username === '' || user.password === '') {
-       loginAlert('incomplete');
-     } else {
-       $http.post('/', user).then(function(response) {
-         if(response.data.username && response.data.role==="student") {
-           $location.path('/student');
-         } else if (response.data.username && response.data.role==="admin") {
-           $location.path('/admin');
-         } else {
-           loginAlert('wrongPassword');
-         }
-       });
-     }
-   }
+  function login() {
+    if (user.username === '' || user.password === '') {
+      loginAlert('incomplete');
+    } else {
+      $http.post('/', user).then(function(response) {
+        if (response.data.username && response.data.role === "student") {
+          $location.path('/student');
+        } else if (response.data.username && response.data.role === "admin") {
+          $location.path('/admin');
+        } else {
+          loginAlert('wrongPassword');
+        }
+      });
+    }
+  }
 
-   function registerUser() {
-     if(user.username === '' || user.password === '') {
-       loginAlert('incomplete');
-     } else {
-       $http.post('/register', user).then(function(response) {
-         loginAlert('userCreated');
-         go('/home');
-       },
-       function(response) {
-         loginAlert('preexisting user');
-       });
-     }
-   }
+  function registerUser() {
+    if (user.username === '' || user.password === '') {
+      loginAlert('incomplete');
+    } else {
+      $http.post('/register', user).then(function(response) {
+          loginAlert('userCreated');
+          go('/home');
+        },
+        function(response) {
+          loginAlert('preexisting user');
+        });
+    }
+  }
 
-   function validateAdminRole() {
-     $http.get('/user').then(function(response) {
-       if (response.data.username && response.data.role === "student") {
-         $location.path("/student"); // user has a current session on the server and has a role of "student"? return to student page.
-       } else if (response.data.username && response.data.role === "admin") {
-         user.name = response.data.username; // user has a current session on the server and has a role of "admin"? they can stay.
-         user.id = response.data.id;
-         $location.path("/admin");
-       } else {
-         $location.path("/home"); // user has no session? back to the login.
-       }
-     });
-   }
+  function validateAdminRole() {
+    $http.get('/user').then(function(response) {
+      if (response.data.username && response.data.role === "student") {
+        $location.path("/student"); // user has a current session on the server and has a role of "student"? return to student page.
+      } else if (response.data.username && response.data.role === "admin") {
+        user.name = response.data.username; // user has a current session on the server and has a role of "admin"? they can stay.
+        user.id = response.data.id;
+        $location.path("/admin");
+      } else {
+        $location.path("/home"); // user has no session? back to the login.
+      }
+    });
+  }
 
-   function validateStudentRole() {
-     $http.get('/user').then(function(response) {
-       if (response.data.username) { // user has a current session on the server, regardless of role? They can stay.
-         user.name = response.data.username;
-         user.id = response.data.id;
-         } else {
-         $location.path("/home"); // user has no session? back to the login.
-       }
-     });
-   }
+  function validateStudentRole() {
+    $http.get('/user').then(function(response) {
+      if (response.data.username) { // user has a current session on the server, regardless of role? They can stay.
+        user.name = response.data.username;
+        user.id = response.data.id;
+      } else {
+        $location.path("/home"); // user has no session? back to the login.
+      }
+    });
+  }
 
-   function logout() {
-     $http.get('/user/logout').then(function(response) {
-       go("/home");
-     });
-   }
+  function logout() {
+    $http.get('/user/logout').then(function(response) {
+      go("/home");
+    });
+  }
 
   return {
     validateAdminRole: validateAdminRole,
