@@ -1,21 +1,25 @@
-<div layout="row" layout-align="end start">
-  <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
-    <md-icon class="fab_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
-  </md-button>
-</div>
+<section>
 
-<div layout="row" layout-align="center center" layout-wrap>
-  <md-card flex="90" md-whiteframe="12" layout-align="center center">
-    <md-card-content layout="row" layout-align="center center" layout-wrap>
-      <img ng-src="https://s3-us-west-2.amazonaws.com/kepd-images/{{testItem.current.item_prompt}}" class="md-card-image" alt="image caption">
-    </md-card-content>
-    <md-card-content layout="row" layout-align="center center" layout-wrap>
-      <span class="karen karen_large">{{testItem.current.item_answer_kn}}</span>
-    </md-card-content>
-    <md-card-content layout="row" layout-align="center center" layout-wrap ng-repeat="qOption in testItem.current.qOptions track by $index">
-      <div layout-align="center center">
-        <span ng-click="getAnswer(qOption)" class="md-display-2 testAnswers">{{qOption}}</span>
-      </div>
-    </md-card-content>
-  </md-card>
-</div>
+  <div layout="row" layout-align="end start">
+    <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
+      <md-icon class="fab_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
+    </md-button>
+  </div>
+
+  <div layout="row" layout-align="center center" layout-wrap>
+    <md-card flex="90" md-whiteframe="12" layout-align="center center">
+      <md-card-content layout="row" layout-align="center center" layout-wrap>
+        <img ng-src="https://s3-us-west-2.amazonaws.com/kepd-images/{{testItem.current.item_prompt}}" class="md-card-image" alt="image caption">
+      </md-card-content>
+      <md-card-content layout="row" layout-align="center center" layout-wrap>
+        <span class="karen karen_large">{{testItem.current.item_answer_kn}}</span>
+      </md-card-content>
+      <md-card-content layout="row" layout-align="center center" layout-wrap ng-repeat="qOption in testItem.current.qOptions track by $index">
+        <div layout-align="center center">
+          <span ng-click="getAnswer(qOption)" class="md-display-2 testAnswers">{{qOption}}</span>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+
+</section>

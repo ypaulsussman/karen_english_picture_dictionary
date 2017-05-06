@@ -1,35 +1,32 @@
-<div layout="column" class="test_finished">
+<section class="test_finished">
 
-  <div layout="row" layout-align="end start">
-    <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
-      <md-icon class="fab_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
-    </md-button>
-  </div>
+    <div layout="row" layout-align="end start">
+      <md-button ng-click="backToThemes()" class="md-fab md-primary" aria-label="Go Back">
+        <md-icon class="fab_icon" md-svg-src="/media/icons/ic_clear_white_48px.svg"></md-icon>
+      </md-button>
+    </div>
 
+    <div layout="row" layout-align="center center" layout-wrap>
+      <md-card flex="80" md-whiteframe="12" layout-align="center center">
+        <md-card-content layout="row" layout-align="center center" layout-wrap>
+          <span class="md-display-2 testInfo">Good Work!</span>
+        </md-card-content>
+        <md-card-content layout="row" layout-align="center center" layout-wrap>
+          <span class="md-display-1 testInfo">You got:</span>
+        </md-card-content>
+        <md-card-content layout="row" layout-align="center center" layout-wrap>
+          <span class="md-display-3 testInfo">{{answerMeta.correctAnswerSum}}</span>
+        </md-card-content>
+        <md-card-content layout="row" layout-align="center center" layout-wrap>
+          <span class="md-display-1 testInfo">answers correct, from</span>
+        </md-card-content>
+        <md-card-content layout="row" layout-align="center center" layout-wrap>
+          <span class="md-display-3 testInfo">{{answerMeta.totalAnswers}}</span>
+        </md-card-content>
+        <md-card-content layout="row" layout-align="center center" layout-wrap>
+          <span class="md-display-1 testInfo">total!</span>
+        </md-card-content>
+      </md-card>
+    </div>
 
-  <div layout="row" layout-align="center center" layout-wrap>
-    <md-card flex="80" md-whiteframe="12" layout-align="center center">
-      <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-2 testInfo">Good Work!</span>
-      </md-card-content>
-      <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-1 testInfo">You got:</span>
-      </md-card-content>
-      <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-3 testInfo">{{answerMeta.correctAnswerSum}}</span>
-      </md-card-content>
-      <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-1 testInfo">answers correct, from</span>
-      </md-card-content>
-      <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-3 testInfo">{{answerMeta.totalAnswers}}</span>
-      </md-card-content>
-      <md-card-content layout="row" layout-align="center center" layout-wrap>
-        <span class="md-display-1 testInfo">total!</span>
-      </md-card-content>
-
-    </md-card>
-  </div>
-
-
-</div>
+</section>

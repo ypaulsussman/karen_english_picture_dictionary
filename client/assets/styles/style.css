@@ -1,3 +1,18 @@
+/*sets max-width for desktop student view */
+@media (min-width: 1000px) {
+  section {
+    max-width: 600px;
+    margin: auto;
+  }
+  html, body, main, section{
+    background-color: Gainsboro;
+  }
+  .search-bar{
+    background-color: DimGray;
+    border-radius: 10px;
+  }
+}
+
 /*Adds Karen font*/
 @font-face {
   font-family: 'KNU';

@@ -1,4 +1,4 @@
-<div layout="column" class="entry_basket">
+<section>
 
   <div layout="row" layout-align="end start">
     <md-button ng-click="exitEntry()" class="md-fab md-primary" aria-label="Go Back">
@@ -28,15 +28,12 @@
     <md-button ng-show="testWebSpeech()" ng-click="readEntry()" class="md-fab" aria-label="Read Word">
       <md-icon class="fab_icon" md-svg-src="/media/icons/ic_hearing_white_48px.svg"></md-icon>
     </md-button>
-
     <md-button ng-hide="studying.now" ng-click="addStudyItem(entryItem.item.id, userName.id)" class="md-fab md-primary" aria-label="Add to study list">
       <md-icon class="fab_icon" md-svg-src="/media/icons/ic_playlist_add_white_48px.svg"></md-icon>
     </md-button>
-
     <md-button ng-show="studying.now" ng-click="removeStudyItem(entryItem.item.id, userName.id)" class="md-fab md-primary" aria-label="Add to study list">
       <md-icon class="fab_icon" md-svg-src="/media/icons/ic_delete_sweep_white_48px.svg"></md-icon>
     </md-button>
-
   </div>
 
-</div>
+</section>

@@ -1,53 +1,57 @@
-<!-- @TODO: make this header into a separate template file, to serve both this and admin.html (?) -->
+<!-- @TODO: make this header into a separate template file, to serve both this view and admin.html -->
 
-<div layout="row" layout-align="space-between center">
-  <div layout="column" layout-align="end center">
-    <md-button class="md-raised md-primary goToSearch" ng-click="routeToSearch()">Search
-      <md-icon class="searchIcon" md-svg-src="/media/icons/ic_search_white_48px.svg"></md-icon>
-    </md-button>
+<section>
+  <div layout="row" layout-align="space-between center">
+    <div layout="column" layout-align="end center">
+      <md-button class="md-raised md-primary goToSearch" ng-click="routeToSearch()">Search
+        <md-icon class="searchIcon" md-svg-src="/media/icons/ic_search_white_48px.svg"></md-icon>
+      </md-button>
+    </div>
+    <div layout="column" layout-align="end center">
+      <md-button id="logoutStudent" class="md-warn" ng-click="logout()">Log Out</md-button>
+    </div>
   </div>
-  <div layout="column" layout-align="end center">
-    <md-button id="logoutStudent" class="md-warn" ng-click="logout()">Log Out</md-button>
-  </div>
-</div>
 
-<div layout="row" layout-wrap>
-  <div flex="90" flex-offset="5">
-    <md-card md-whiteframe="8">
-      <div layout="row" layout-align="center center" layout-wrap ng-click="routeToTheme({name: 'list'}, false, userName.id)">
-        <span class="karen karen_large"> 'd; pJ;  p&Du</span>
-      </div>
-      <div layout="row" layout-align="center start" layout-wrap ng-click="routeToTheme({name: 'list'}, false, userName.id)">
-        <span class="md-display-1 english_theme">My Study List</span>
-      </div>
-      <md-card-content layout="row" layout-align="space-around start" layout-wrap>
-        <md-button class="open_theme" aria-label="Browse theme" ng-click="routeToTheme({name: 'list'}, false, userName.id)">
-          <md-icon class="launcher_button_icon" md-svg-src="/media/icons/ic_remove_red_eye_white_48px.svg"></md-icon>
-        </md-button>
-        <md-button class="launch_test" aria-label="Go to test" ng-click="routeToTheme({name: 'list'}, true, userName.id)">
-          <md-icon class="launcher_button_icon" md-svg-src="/media/icons/ic_assignment_white_48px.svg"></md-icon>
-        </md-button>
-    </md-card>
+<!-- card containing personal study list -->
+  <div layout="row" layout-wrap>
+    <div flex="90" flex-offset="5">
+      <md-card md-whiteframe="8">
+        <div layout="row" layout-align="center center" layout-wrap ng-click="routeToTheme({name: 'list'}, false, userName.id)">
+          <span class="karen karen_large"> 'd; pJ;  p&Du</span>
+        </div>
+        <div layout="row" layout-align="center start" layout-wrap ng-click="routeToTheme({name: 'list'}, false, userName.id)">
+          <span class="md-display-1 english_theme">My Study List</span>
+        </div>
+        <md-card-content layout="row" layout-align="space-around start" layout-wrap>
+          <md-button class="open_theme" aria-label="Browse theme" ng-click="routeToTheme({name: 'list'}, false, userName.id)">
+            <md-icon class="launcher_button_icon" md-svg-src="/media/icons/ic_remove_red_eye_white_48px.svg"></md-icon>
+          </md-button>
+          <md-button class="launch_test" aria-label="Go to test" ng-click="routeToTheme({name: 'list'}, true, userName.id)">
+            <md-icon class="launcher_button_icon" md-svg-src="/media/icons/ic_assignment_white_48px.svg"></md-icon>
+          </md-button>
+      </md-card>
+    </div>
   </div>
-</div>
 
-<div layout="row" layout-wrap>
-  <div flex="90" flex-offset="5" ng-repeat="theme in themes">
-    <md-card md-whiteframe="8">
-      <div layout="row" layout-align="center center" layout-wrap ng-click="routeToTheme(theme, false)">
-        <span class="karen karen_large">{{theme.nameKN}}</span>
-      </div>
-      <div layout="row" layout-align="center start" layout-wrap ng-click="routeToTheme(theme, false)">
-        <span class="md-display-1 english_theme">{{theme.name}}</span>
-      </div>
-      <md-card-content layout="row" layout-align="space-around start" layout-wrap>
-        <md-button class="open_theme" aria-label="Browse theme" ng-click="routeToTheme(theme, false)">
-          <md-icon class="launcher_button_icon" md-svg-src="/media/icons/ic_remove_red_eye_white_48px.svg"></md-icon>
-        </md-button>
-        <md-button class="launch_test" aria-label="Go to test" ng-click="routeToTheme(theme, true)">
-          <md-icon class="launcher_button_icon" md-svg-src="/media/icons/ic_assignment_white_48px.svg"></md-icon>
-        </md-button>
-      </md-card-content>
-    </md-card>
+<!-- cards containing themes -->
+  <div layout="row" layout-wrap>
+    <div flex="90" flex-offset="5" ng-repeat="theme in themes">
+      <md-card md-whiteframe="8">
+        <div layout="row" layout-align="center center" layout-wrap ng-click="routeToTheme(theme, false)">
+          <span class="karen karen_large">{{theme.nameKN}}</span>
+        </div>
+        <div layout="row" layout-align="center start" layout-wrap ng-click="routeToTheme(theme, false)">
+          <span class="md-display-1 english_theme">{{theme.name}}</span>
+        </div>
+        <md-card-content layout="row" layout-align="space-around start" layout-wrap>
+          <md-button class="open_theme" aria-label="Browse theme" ng-click="routeToTheme(theme, false)">
+            <md-icon class="launcher_button_icon" md-svg-src="/media/icons/ic_remove_red_eye_white_48px.svg"></md-icon>
+          </md-button>
+          <md-button class="launch_test" aria-label="Go to test" ng-click="routeToTheme(theme, true)">
+            <md-icon class="launcher_button_icon" md-svg-src="/media/icons/ic_assignment_white_48px.svg"></md-icon>
+          </md-button>
+        </md-card-content>
+      </md-card>
+    </div>
   </div>
-</div>
+</section>

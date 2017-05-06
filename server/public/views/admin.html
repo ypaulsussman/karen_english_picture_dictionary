@@ -1,12 +1,14 @@
-<div layout="row" layout-align="space-between start" class="admin_table">
-  <div class="column" flex-offset="5">
-    <h1 class="md-display-2">Welcome, {{userName.name}}!</h1>
-  </div>
+<div layout="column">
+
+  <div layout="row" layout-align="space-between start" class="admin_table">
+    <div class="column" flex-offset="5">
+      <h1 class="md-display-2">Welcome, {{userName.name}}!</h1>
+    </div>
     <md-button id="logoutAdmin" ng-click="logout()">Log Out</md-button>
-</div>
+  </div>
 
   <div layout="row" layout-align="center center" class="admin_table">
-    <md-card md-whiteframe="8" flex="90" >
+    <md-card md-whiteframe="8" flex="90">
       <div layout="row" layout-align="space-around none" class="admin_table">
         <md-input-container>
           <label>Theme</label>
@@ -60,8 +62,7 @@
             </tr>
           </thead>
           <tbody md-body>
-            <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect"
-              ng-repeat="item in allItems.items | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+            <tr md-row md-select="item" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="item in allItems.items | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
               <td md-cell>
                 <md-button flex="45" aria-label="delete" class="md-raised admin-button" ng-click="showConfirm(item)">
                   <md-icon layout-fill md-svg-src="/media/icons/ic_clear_black_48px.svg"></md-icon>
@@ -79,7 +80,8 @@
           </tbody>
         </table>
       </md-table-container>
-      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{allItems.items.length}}"
-      md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
+      <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{allItems.items.length}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
     </md-card>
   </div>
+
+</div>
