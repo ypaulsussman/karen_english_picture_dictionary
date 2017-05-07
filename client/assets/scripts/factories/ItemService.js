@@ -276,10 +276,10 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
     var title = '';
     switch (outcome) {
       case 'success':
-        title = 'Item added!';
+        title = 'You have saved this item!';
         break;
       case 'failure':
-        title = 'Item already saved.';
+        title = 'You already saved this item.';
         break;
       default:
     }
@@ -318,7 +318,6 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
     utterThis.rate = speechRate;
     synth.speak(utterThis);
   }
-
 
   return {
     getAllItems: getAllItems,
