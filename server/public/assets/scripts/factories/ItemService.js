@@ -309,7 +309,6 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   }
 
   function readEntry(text) {
-    console.log("here it is!", text);
     var synth = window.speechSynthesis;
     var speechRate = 0.6;
     var voices = synth.getVoices();
