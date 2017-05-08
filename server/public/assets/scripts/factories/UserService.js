@@ -130,7 +130,6 @@ myApp.factory('UserService', ['$http', '$location', '$mdDialog', function($http,
 
   /**
    * @desc logs the user out of the app, and returns to the login page.
-   * student view.
    */
   function logout() {
     $http.get('/user/logout').then(function(response) {
