@@ -18,6 +18,7 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
     now: false
   };
   var minTestItems = 5;
+
   /**
    * @desc routes through items.js to retrieve all dictionary entries;
    * it's used for the Admin view, and in the search mode of Student view.
@@ -29,8 +30,8 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   }
 
   /**
-   * @param {object} item - The entry to be added (specified in AdminController.)
    * @desc routes through items.js to add a new dictionary entry.
+   * @param {object} item - The entry to be added (specified in AdminController.)
    */
   function addItem(item) {
     var copy = angular.copy[item];
@@ -40,9 +41,9 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   }
 
   /**
-   * @param {object} item - The entry to be altered (specified in AdminController.)
-   * @desc routes through items.js to update a preexisting dictionary entry.
-   */
+  * @desc routes through items.js to update a preexisting dictionary entry.
+  * @param {object} item - The entry to be altered (specified in AdminController.)
+  */
   function updateItem(item) {
     var copy = angular.copy[item];
     $http.put('/items/update', item).then(function(response) {
@@ -51,8 +52,8 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   }
 
   /**
-   * @param {object} item - The entry to be removed (specified in AdminController.)
    * @desc routes through items.js to remove a dictionary entry, per its ID.
+   * @param {object} item - The entry to be removed (specified in AdminController.)
    */
   function deleteItem(item) {
     var removeID = item.id;
@@ -64,7 +65,8 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   /**
    * @desc an array of objects representing the Karen and English words for
    * each theme displayed in the Student view.
-   * @TODO: transfer these themes to their own db table.
+   * @TODO: transfer these themes to their own db table;
+   * hard-coding them here is unacceptably misleading for other users
    */
   var themes = [{
       name: 'The Classroom',
@@ -96,9 +98,9 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   }
 
   /**
+   * @desc routes the user to the view for either all the entries in a specific theme,
    * @param {object} theme - The theme selected by the user to be opened.
    * @param {boolean} takingTest - Whether the user clicked the "test" button, or the "theme" button.
-   * @desc routes the user to the view for either all the entries in a specific theme,
    * or for the first item in a test of those entries.
    */
   function routeToTheme(theme, takingTest, user) {
@@ -111,10 +113,10 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   }
 
   /**
-   * @param {object} theme - The theme selected by the user to be opened.
-   * @param {boolean} takingTest - Whether the user clicked the "test" button, or the "theme" button.
    * @desc routes through items.js to retrieve all dictionary entries
    * of a specific theme, and begins a test of those entries (if so directed.)
+   * @param {object} theme - The theme selected by the user to be opened.
+   * @param {boolean} takingTest - Whether the user clicked the "test" button, or the "theme" button.
    */
   function getThemedItems(theme, takingTest, user) {
     if (user) {
@@ -134,6 +136,10 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
     });
   }
 
+  /**
+   * @desc displays an AngularJS Material dialog informing user that they can't
+   * enter a test of their study list w/o first adding more dictionary entries
+   */
   function notEnoughItemsAlert() {
     $mdDialog.show(
       $mdDialog.alert()
@@ -146,9 +152,9 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   }
 
   /**
-   * @param {object} item - The item selected by the user to be opened.
    * @desc routes the user to the view that holds an individual dictionary entry,
    * then specifies which entry to display.
+   * @param {object} item - The dictionary entry selected by the user to be opened.
    */
   function openEntry(item) {
     $location.path("/entry");
@@ -168,10 +174,10 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   }
 
   /**
-   * @param {object} themedItems - An object holding an array of one theme's dictionary entries,
-   * as retrieved by the getThemedItems() function.
    * @desc creates a randomized array of test items, each with randomized
    * distractors, then sends the displays the test item to the user.
+   * @param {object} themedItems - An object holding an array of one theme's dictionary entries,
+   * as retrieved by the getThemedItems() function.
    */
   function beginTest(themedItems) {
     themedItems.items.sort(randomizeArray);
@@ -201,12 +207,12 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   }
 
   /**
+   * @desc randomizes arrays of e.g. the test items and distractors
+   * used in the beginTest() function.
    * @param {object} a - The first element being "compared" in a given .sort() method
    * @param {object} b - The second element being "compared" in a given .sort() method
    * @returns {number} - A float between .5 and -.5, whose sign determines
-   * whether parameter b is moved brefore parameter a.
-   * @desc randomizes arrays of e.g. the test items and distractors
-   * used in the beginTest() function.
+   * whether parameter b is moved before parameter a.
    */
   function randomizeArray(a, b) {
     return 0.5 - Math.random();
@@ -230,9 +236,9 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
   }
 
   /**
-   * @param {string} qOption - The test answer selected by the user.
    * @desc determines whether the user chose the correct test item,
    * updates the overall test score, then routes them to the correct answer.
+   * @param {string} qOption - The test answer selected by the user.
    */
   function getAnswer(qOption) {
     if (qOption === themedItems.items[(iterator - 1)].item_answer_en) {
@@ -260,6 +266,12 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
     }
   }
 
+  /**
+   * @desc associates a dictionary entry with a specific user, allowing that user
+   * to call the entry from their study-list "theme"
+   * @param {number} itemID - The primary-key ID of the item to be associated.
+   * @param {number} userID - The primary-key ID of the user to be associated.
+   */
   function addStudyItem(itemID, userID) {
     var studyItem = {
       itemID: itemID,
@@ -272,6 +284,11 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
     });
   }
 
+  /**
+   * @desc displays an AngularJS Material dialog informing user of their
+   * success/failure adding a dictionary entry to their study list.
+   * @param {string} outcome - The result of the attempt to add the entry.
+   */
   function addStudyItemResult(outcome) {
     var title = '';
     switch (outcome) {
@@ -292,6 +309,13 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
     );
   }
 
+  /**
+   * @desc deletes a user-item association, removing that item from the user's
+   * study list, then returning the user to the study-list view.
+   * @param {number} itemID - The primary-key ID of the item to be removed.
+   * @param {number} userID - The primary-key ID of the user from whose study-list
+   * the item will be removed.
+   */
   function removeStudyItem(itemID, userID) {
     $http.delete('/items/delete_study/' + itemID).then(function() {
       routeToTheme({
@@ -300,6 +324,10 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
     });
   }
 
+  /**
+   * @desc tests whether a browser supports WebSpeech, thereby allowing views
+   * to hide the 'read item' button study list, then returning the user to the study-list view.
+   */
   function testWebSpeech() {
     if (('webkitSpeechRecognition' in window)) {
       return true;
@@ -308,6 +336,11 @@ myApp.factory('ItemService', ['$http', '$location', '$mdDialog', function($http,
     }
   }
 
+  /**
+   * @desc uses speechSynthesis text-to-speech to play a computer recording
+   * of a dictionary entry's English text
+   * @param {string} text - The dictionary-entry to be played in audio
+   */
   function readEntry(text) {
     var synth = window.speechSynthesis;
     var speechRate = 0.6;

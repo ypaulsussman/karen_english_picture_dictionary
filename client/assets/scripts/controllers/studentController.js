@@ -7,7 +7,7 @@ myApp.controller('StudentController', ['$scope', '$http', '$location', 'ItemServ
   $scope.routeToTheme = ItemService.routeToTheme;
   $scope.routeToSearch = ItemService.routeToSearch;
 
-  // These exist to compensate for the weird first-time latency in
+  // These exist to compensate for the weird first-use latency in
   // assigning the proper voice to SpeechSynthesis; it ensures that the
   // readEntry() function runs once, silently, before any entries are loaded, thus
   // clearing the (terrible) default male voice.
